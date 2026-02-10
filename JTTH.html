@@ -1,0 +1,1257 @@
+<input type="hidden" name="attr_sheet_version" value="2.0">
+<input type="hidden" name="attr_character_type" value="mortal">
+<input type="hidden" name="attr_is_beast" value="0">
+<input type="hidden" name="attr_show_char_creation" value="1">
+<input type="hidden" name="attr_level_up_mode" value="0">
+
+<!-- Page Navigation Radios -->
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_char_creation" value="char_creation" checked>
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_mortal" value="mortal">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_cultivator" value="cultivator">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_beast" value="beast">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_combat" value="combat">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_techniques" value="techniques">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_bio" value="bio">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_notes" value="notes">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_inventory" value="inventory">
+<input type="radio" name="attr_page" class="sheet-page-radio" id="attr_page_options" value="options">
+
+<div class="sheet-container">
+    <!-- Roll Settings -->
+    <div class="sheet-roll-settings">
+        <label>
+            <input type="radio" name="attr_whisper" value="" checked>
+            <span>Public</span>
+        </label>
+        <label>
+            <input type="radio" name="attr_whisper" value="/w gm ">
+            <span>To GM</span>
+        </label>
+    </div>
+
+    <!-- Character Header -->
+    <div class="sheet-header">
+        <div class="sheet-avatar">
+            <img name="attr_character_avatar">
+        </div>
+        <div class="sheet-info">
+            <div class="sheet-field">
+                <label>Name:</label>
+                <input type="text" name="attr_character_name">
+            </div>
+            <div class="sheet-field">
+                <label>Ancestry & Species:</label>
+                <input type="text" name="attr_ancestry_species">
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="sheet-tabs">
+        <label class="sheet-tab sheet-tab-char-creation" for="attr_page_char_creation">Character Creation</label>
+        <label class="sheet-tab sheet-tab-mortal" for="attr_page_mortal">Mortal</label>
+        <label class="sheet-tab sheet-tab-cultivator" for="attr_page_cultivator">Cultivator</label>
+        <label class="sheet-tab sheet-tab-beast" for="attr_page_beast">Beast</label>
+        <label class="sheet-tab sheet-tab-combat" for="attr_page_combat">Combat</label>
+        <label class="sheet-tab sheet-tab-techniques" for="attr_page_techniques">Techniques</label>
+        <label class="sheet-tab sheet-tab-bio" for="attr_page_bio">Bio</label>
+        <label class="sheet-tab sheet-tab-notes" for="attr_page_notes">Notes</label>
+        <label class="sheet-tab sheet-tab-inventory" for="attr_page_inventory">Inventory</label>
+        <label class="sheet-tab sheet-tab-options" for="attr_page_options">Options</label>
+    </div>
+
+    <!-- Page Content -->
+    <div class="sheet-content">
+        <!-- Character Creation Page -->
+        <div class="sheet-page sheet-page-char-creation">
+            <input type="hidden" name="attr_creation_step" value="0">
+            
+            <!-- Step Navigation -->
+            <div class="sheet-step-tabs">
+                <button type="action" name="act_step_tab_0" class="sheet-step-tab sheet-step-tab-0">Welcome</button>
+                <button type="action" name="act_step_tab_1" class="sheet-step-tab sheet-step-tab-1">Ancestry</button>
+                <button type="action" name="act_step_tab_2" class="sheet-step-tab sheet-step-tab-2">Species</button>
+                <button type="action" name="act_step_tab_complete" class="sheet-step-tab sheet-step-tab-complete">Complete</button>
+            </div>
+            
+            <!-- Step 0: Welcome Screen -->
+            <div class="sheet-creation-step sheet-creation-welcome">
+                <h2>Welcome to Journey to the Heavens</h2>
+                <div class="sheet-welcome-content">
+                    <p>Welcome, aspiring cultivator, to the <strong>Journey to the Heavens Character Creator</strong>.</p>
+                    <p>This guided process will help you forge your path through the realms of cultivation, from humble mortal beginnings to the heights of power.</p>
+                    <p>Before you begin, we recommend reviewing:</p>
+                    <ul>
+                        <li><strong>JTTH Wiki</strong> - For detailed information about the world, cultivation, and game mechanics</li>
+                        <li><strong>Trello Board</strong> - For updates, rules clarifications, and additional resources</li>
+                    </ul>
+                    <p>Your journey begins with a single step. Are you ready to walk the path of cultivation?</p>
+                </div>
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="act_cancel_creation" class="sheet-btn-cancel">Cancel</button>
+                    <button type="action" name="act_next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
+            <!-- Ancestry Radio Inputs (must be sibling of both ancestry and species steps) -->
+            <input type="radio" name="attr_ancestry" value="human" id="anc-human" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="demihuman" id="anc-demihuman" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="beastman" id="anc-beastman" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="giant" id="anc-giant" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="fishman" id="anc-fishman" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="plantkin" id="anc-plantkin" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="lunarian" id="anc-lunarian" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="crawler" id="anc-crawler" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="demon" id="anc-demon" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="sentient_beast" id="anc-sentient-beast" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="slimekin" id="anc-slimekin" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="solarian" id="anc-solarian" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="yokai" id="anc-yokai" class="sheet-hide">
+            <input type="radio" name="attr_ancestry" value="winged_race" id="anc-winged-race" class="sheet-hide">
+
+            <!-- Step 1: Ancestry Selection -->
+            <div class="sheet-creation-step sheet-creation-ancestry">
+                <h2>Step 1: Choose Your Ancestry</h2>
+                
+                <div class="sheet-ancestry-content">
+                    <div class="sheet-ancestry-grid">
+                        <label for="anc-human">Human</label>
+                        <label for="anc-demihuman">Demihuman</label>
+                        <label for="anc-beastman">Beastman</label>
+                        <label for="anc-giant">Giant Race</label>
+                        <label for="anc-fishman">Fishman</label>
+                        <label for="anc-plantkin">Plantkin</label>
+                        <label for="anc-lunarian">Lunarian</label>
+                        <label for="anc-crawler">Crawler</label>
+                        <label for="anc-demon">Demon</label>
+                        <label for="anc-sentient-beast">Sentient Beast</label>
+                        <label for="anc-slimekin">Slimekin</label>
+                        <label for="anc-solarian">Solarian</label>
+                        <label for="anc-yokai">Yokai</label>
+                        <label for="anc-winged-race">Winged Race</label>
+                    </div>
+
+                <div class="sheet-ancestry-info-display">
+                    <div class="sheet-info-placeholder">Select an ancestry to view details</div>
+                    
+                    <div class="sheet-info-block sheet-info-human">
+                        <h3>Human</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 1/10</li>
+                            <li>Speed: 1/10</li>
+                            <li>Cultivation Speed: 8/10 (+30%)</li>
+                            <li>Lifespan: 1/10 (-25%)</li>
+                            <li>Durability: 1/10</li>
+                            <li>Potential: 10/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Versatility through Neutrality - Can pursue any Dao</li>
+                            <li>Bloodline Integration - Can absorb another bloodline</li>
+                            <li>The Potential of a Firework - +30% cultivation speed</li>
+                            <li>The Earliest Learners - Higher Law sensitivity</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Shortest lifespan among all races</li>
+                            <li>Physically weak and slow (Base)</li>
+                            <li>Dull senses (Base)</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul><li>None (Can pursue any Dao)</li></ul>
+                        <hr>
+                        <p><strong>Species:</strong> None</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-demihuman">
+                        <h3>Demihuman</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 6/10</li>
+                            <li>Speed: 6/10</li>
+                            <li>Cultivation Speed: 6/10 (+10%)</li>
+                            <li>Lifespan: 4/10 (-10%)</li>
+                            <li>Durability: 6/10</li>
+                            <li>Potential: Depends/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Half Beast, Half Man - Above-average stats</li>
+                            <li>Mating season once a year</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Limited by Bloodline Quality (Roll 1d10,000)</li>
+                            <li>Class Restrictions apply</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>All Martial Dao + Body Refiner</li>
+                            <li>All Elemental Dao</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Species:</strong> Varies by bloodline (determined by roll)</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-beastman">
+                        <h3>Beastman</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 8/10</li>
+                            <li>Speed: 8/10</li>
+                            <li>Cultivation Speed: 4/10 (-10%)</li>
+                            <li>Lifespan: 7/10 (+20%)</li>
+                            <li>Durability: 7.5/10</li>
+                            <li>Potential: Depends/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Sentient Mind, Bestial Body - Formidable physiques</li>
+                            <li>Strong, fast, and durable</li>
+                            <li>Mating season once a year</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Below average cultivation speed (-10%)</li>
+                            <li>Very limited by Bloodline Quality (Roll 1d10,000)</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul><li>All Martial Dao + Body Refiner</li></ul>
+                        <hr>
+                        <p><strong>Species:</strong> Varies by bloodline (determined by roll)</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-giant">
+                        <h3>Giant Race (Costs 2 Lives)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 10/10</li>
+                            <li>Speed: 4/10</li>
+                            <li>Cultivation Speed: 6.5/10</li>
+                            <li>Lifespan: 10/10 (+50%)</li>
+                            <li>Durability: 8.5/10</li>
+                            <li>Potential: 7/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Giant's Body - +50% Qi/PWR/HP, 2x Durability, 3-6m tall</li>
+                            <li>Ancestor's Sturdiness - Harder to injure, damage reduction</li>
+                            <li>Innate Bloodline - Purity affects strength/status</li>
+                            <li>Extreme Earth Affinity - 1:1 Freestyling with Earth Qi</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Non-compatible with AGI Classes</li>
+                            <li>Low Evasion</li>
+                            <li>Costs 2 Lives</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Earth Dao (Major Synergy)</li>
+                            <li>Body Refining (Fist, Palm)</li>
+                            <li>All PWR-based Dao</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Species:</strong> None</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-fishman">
+                        <h3>Fishman (Costs 2 Lives)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 7/10</li>
+                            <li>Speed: 4/10 land / 10/10 water</li>
+                            <li>Cultivation Speed: 5.5/10</li>
+                            <li>Lifespan: 5/10</li>
+                            <li>Durability: 5/10 land / 8.5/10 water</li>
+                            <li>Potential: 7.5/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Child of the Deep - 50% more damage underwater</li>
+                            <li>Strength/Calm of the Deep - +35% PWR/MTL</li>
+                            <li>Mental Fortress - 2x Mental Fortitude</li>
+                            <li>Rehydrated Scales - 2x Durability underwater</li>
+                            <li>Slippery as an Eel - 2x Evasion underwater</li>
+                            <li>Strong Swimmer - 2x Movement underwater</li>
+                            <li>Friend of the Deep - Communicate with aquatic creatures</li>
+                            <li>Psychic Sonar - Mental shockwave attacks</li>
+                            <li>Innate Bloodline - Purity paramount</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Weak to Fire and Lightning</li>
+                            <li>Can dry out in extreme heat</li>
+                            <li>Slowed in extreme cold</li>
+                            <li>Costs 2 Lives</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Water Dao</li>
+                            <li>Mind Dao</li>
+                            <li>Spear / Psychic (Spear Variant)</li>
+                            <li>Poison Dao</li>
+                            <li>PWR Fist Body Refiner</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Water, Mind, Poison</p>
+                        <hr>
+                        <p><strong>Species:</strong> None (various sea beast descendants)</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-plantkin">
+                        <h3>Plantkin</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 6/10</li>
+                            <li>Speed: 6/10</li>
+                            <li>Cultivation Speed: 6.5/10</li>
+                            <li>Lifespan: 9/10 (+40%)</li>
+                            <li>Durability: 9/10</li>
+                            <li>Potential: 8/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Fibrous Flesh - 2x Durability, +100% Max HP, Flat damage reduction</li>
+                            <li>Herb Integration - 1 per Major Realm (2 if Genius)</li>
+                            <li>Photosynthesis - 5% Qi Regeneration</li>
+                            <li>Friend of the Trees - Communicate with plants</li>
+                            <li>Extreme Wood Affinity - 1:1 Qi Improv. Ratio</li>
+                            <li>Herb Origin - Choose spiritual herb type</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>No healing via pills (Wood Qi only)</li>
+                            <li>Weakened in extreme temps/Qi-poor areas</li>
+                            <li>Limited Dao (No Generalists)</li>
+                            <li>Emotions aren't really your thing</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Wood Dao (Major Synergy, only Element)</li>
+                            <li>All Martial Dao except BR</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Wood Dao (Major Synergy)</p>
+                        <hr>
+                        <p><strong>Species:</strong> Blue Spirit Grass, Red Spirit Grass, Ten Blade Lotus, 100 Year Yang Flower, Parasitic Skullfruit, 100 Year Yin Vine, Bloodthistle, Venomleaf, Ether Lily, Starbloom Orchid, Golden Crown Bamboo</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-lunarian">
+                        <h3>Lunarian</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 3/10</li>
+                            <li>Speed: 7/10 (11/10 night, 15/10 Full Moon)</li>
+                            <li>Cultivation Speed: 7/10</li>
+                            <li>Lifespan: 8/10 (+20%)</li>
+                            <li>Durability: 3/10</li>
+                            <li>Potential: 8.5/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Lunar Litheness - 3x Movement at night</li>
+                            <li>One with the Moon - Enhanced senses at night</li>
+                            <li>Lunar Avatar - 2x AGI/Movement/damage under Full Moon, Lunar Gleam attack</li>
+                            <li>Midnight Lethality - 3x Critical damage at night</li>
+                            <li>Lunar Glow - Additional Pure Yin damage at night</li>
+                            <li>Tides of the Night - 1:1 Freestyle Qi efficiency</li>
+                            <li>Cover of the Moon - Harder to sense at night</li>
+                            <li>Lunar Affinity - High affinity with Pure Yin and Yin Ice</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Weakened in sunlight (halved damage dealt, doubled taken)</li>
+                            <li>Not particularly strong physically</li>
+                            <li>Speed consumables only work during day</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Pure Yin</li>
+                            <li>Ice Dao</li>
+                            <li>Assassination Dao</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Pure Yin, Ice Dao, Assassination Dao</p>
+                        <hr>
+                        <p><strong>Species:</strong> None</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-crawler">
+                        <h3>Crawler (Costs 2 Lives)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 8/10</li>
+                            <li>Speed: 8/10</li>
+                            <li>Cultivation Speed: 7/10</li>
+                            <li>Lifespan: 3/10</li>
+                            <li>Durability: 8/10 (4/10 without exoskeleton)</li>
+                            <li>Potential: 8/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Natural Armour - Exoskeleton with Body Refiner-level defense</li>
+                            <li>Keen Feelers - Enhanced senses, detect ambushes</li>
+                            <li>The Peak of Evolution - +4/20/50 to PWR/AGI/VIT at QG/Found./CF</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Wings vulnerable (double damage, 20% Max HP injury threshold)</li>
+                            <li>Exoskeleton can break (75% Max HP damage threshold)</li>
+                            <li>Costs 2 Lives</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Martial Dao</li>
+                            <li>Poison Dao</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Martial Dao, Poison Dao</p>
+                        <hr>
+                        <p><strong>Species:</strong> Ant, Wasp, Hornet, Centipede, Mantis, Grasshopper, Venomous Spider, Millipede, Beetle, Scorpion, Butterfly/Moth, Fleas, Termite, Dragonfly, Bee, Hunting Spider/Tarantula</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-demon">
+                        <h3>Demon (Evil Playthrough)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 9.5/10</li>
+                            <li>Speed: 9.5/10</li>
+                            <li>Cultivation Speed: N/A</li>
+                            <li>Lifespan: 10/10 (+50%)</li>
+                            <li>Durability: 10/10</li>
+                            <li>Potential: 10/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Descendants of Apex Existences - Extremely formidable</li>
+                            <li>Darwin's Worst Nightmare - Continuously evolve adaptive traits</li>
+                            <li>Player-Killing Enjoyer - Hunts non-Demon Players</li>
+                            <li>Consume and Adapt - Consume souls to fuel evolution</li>
+                            <li>Killing Machine - Requires 2-3 equal realm cultivators to match</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Bloodthirsty</li>
+                            <li>Easy to sense (most of the time)</li>
+                            <li>Hunts all other non-Demon Players</li>
+                            <li>Under absolute control by creator (instant death if disobedient)</li>
+                            <li>Asexual, created and controlled</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul><li><!-- TODO: Add Demon class restrictions --></li></ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Killing, bloodshed, suffering, slaughter, mass-murder</p>
+                        <hr>
+                        <p><strong>Species:</strong> None (evolves through soul consumption)</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-sentient-beast">
+                        <h3>Sentient Beast (Costs 2 Lives)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Burst Damage: 7/10</li>
+                            <li>Consistent Damage: 8/10</li>
+                            <li>Defensive Capabilities: 8/10</li>
+                            <li>Vitality: 7/10</li>
+                            <li>Mobility: Depends/10</li>
+                            <li>Utility: 7/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>2x rolled Health</li>
+                            <li>2x SP gained from Realm</li>
+                            <li>2x Qi Reserves (3x at MS+)</li>
+                            <li>3x base Mental Fortitude</li>
+                            <li>Bloodline Evolution system</li>
+                            <li>Natural capabilities (claws, teeth, etc.)</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Limited by Bloodline Quality (Substandard to Ancient)</li>
+                            <li>Harsh tribulations on breakthrough</li>
+                            <li>Costs 2 Lives</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul><li><!-- TODO: Add Sentient Beast class restrictions --></li></ul>
+                        <hr>
+                        <p><strong>Species:</strong> Canine, Vulpine, Bovine, Ursine, Avian, Boar, Reptilian, Feline, Primate, Other Mammals</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-slimekin">
+                        <h3>Slimekin</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 3/10</li>
+                            <li>Speed: 4/10</li>
+                            <li>Cultivation Speed: 6/10 (+10%)</li>
+                            <li>Lifespan: 6/10 (+10%)</li>
+                            <li>Durability: 9.5/10</li>
+                            <li>Potential: 7.5/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Viscous Body - 3x Durability vs Physical attacks</li>
+                            <li>Body of Fluid - Malleable form and shape</li>
+                            <li>Integrated Sentient Race - Can assume Human form</li>
+                            <li>Core with Qi Pathways (no standard anatomy)</li>
+                            <li>Immune to all Poisons except Caustic, Mind, Soul</li>
+                            <li>Above-average cultivation speed (+10%)</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Genderless, no reproduction</li>
+                            <li>Water bodies can kill via dilution</li>
+                            <li>Fatal weak point: Soul Core (apple-sized sphere)</li>
+                            <li>Affected by extreme environments</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>All Martial Dao except BR</li>
+                            <li>Elemental Dao (depends on variant, cannot use weakness)</li>
+                            <li>Poison Dao</li>
+                            <li>Psychic Dao</li>
+                            <li>Zither</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Varies by variant</p>
+                        <hr>
+                        <p><strong>Variants:</strong> Molten Slimekin, Glacial Slimekin, Regular Slimekin</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-solarian">
+                        <h3>Solarian</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 7/10 (11/10 @ High Noon)</li>
+                            <li>Speed: 3/10</li>
+                            <li>Cultivation Speed: 7/10</li>
+                            <li>Lifespan: 7/10 (+20%)</li>
+                            <li>Durability: 7/10</li>
+                            <li>Potential: 8.5/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Solar Strength - 2x power for 1 min during High Noon</li>
+                            <li>One with the Sun - Enhanced senses during day</li>
+                            <li>Solar Flare - Additional Yang Fire damage during day</li>
+                            <li>Illumination of the Sun - 3x Mental Fortitude during High Noon</li>
+                            <li>Solar Affinity - High affinity with Yang Fire and Fire Qi</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Weakened in darkness (halved damage dealt, doubled taken)</li>
+                            <li>Not particularly fast</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>Yang Fire</li>
+                            <li>Fire</li>
+                            <li>All PWR Dao aside from BR</li>
+                            <li>Buddhism (all branches)</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Yang Fire, Fire, PWR Dao, Buddhism</p>
+                        <hr>
+                        <p><strong>Species:</strong> None</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-yokai">
+                        <h3>Yokai</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: Depends/10</li>
+                            <li>Speed: Depends/10</li>
+                            <li>Cultivation Speed: 6/10 (+10%)</li>
+                            <li>Lifespan: 8/10 (+30%)</li>
+                            <li>Durability: Depends/10</li>
+                            <li>Potential: 9/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Man-eaters of yore - Consume Humans to get stronger infinitely</li>
+                            <li>Army of a Thousand Ghosts, Gods and Spirits - Wide variety available</li>
+                            <li>Terror - Race-specific ability using fear to conceal presence</li>
+                            <li>Above-average cultivation speed (+10%)</li>
+                            <li>Mating season once a year</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Develops bloodthirsty, malevolent aura from Human consumption</li>
+                            <li>Eventual target of Righteous Cultivators and Factions</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul>
+                            <li>All Elemental Dao</li>
+                            <li>All Martial Dao + Body Refiner</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> Varies by species</p>
+                        <hr>
+                        <p><strong>Species:</strong> Hososhi (Oni Minister), Karasu Tengu, Kejoro, Oni (Agility/Brutality/Spirituality), Kitsune (Fox Spirit), and many more</p>
+                    </div>
+                    
+                    <div class="sheet-info-block sheet-info-winged-race">
+                        <h3>Winged Race (Requires Foundation realm minimum)</h3>
+                        <hr>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li>Strength: 3.5/10</li>
+                            <li>Speed: 10/10</li>
+                            <li>Cultivation Speed: 7/10 (+20%)</li>
+                            <li>Lifespan: 7/10 (+20%)</li>
+                            <li>Durability: 4/10</li>
+                            <li>Potential: 8/10</li>
+                        </ul>
+                        <hr>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Innate Bloodline - Purity paramount</li>
+                            <li>Fast cultivation speed (+20%)</li>
+                            <li><!-- TODO: Add more Winged Race features --></li>
+                        </ul>
+                        <hr>
+                        <p><strong>Negatives:</strong></p>
+                        <ul>
+                            <li>Requires Foundation realm minimum to play</li>
+                            <li><!-- TODO: Add more Winged Race negatives --></li>
+                        </ul>
+                        <hr>
+                        <p><strong>Class Restrictions:</strong></p>
+                        <ul><li><!-- TODO: Add Winged Race class restrictions --></li></ul>
+                        <hr>
+                        <p><strong>Affinities:</strong> <!-- TODO: Add Winged Race affinities --></p>
+                        <hr>
+                        <p><strong>Species:</strong> <!-- TODO: Add Winged Race species --></p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="act_prev_step" class="sheet-btn-prev">Previous</button>
+                    <button type="action" name="act_next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Species Selection -->
+            <div class="sheet-creation-step sheet-creation-species">
+                <h2>Step 2: Choose Your Species</h2>
+                
+                <div class="sheet-species-content">
+                    <!-- Species Radio Inputs (must be siblings of both selection and display) -->
+                    <input type="radio" name="attr_species" value="demihuman_fox" id="demi-fox" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="demihuman_cat" id="demi-cat" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="demihuman_wolf" id="demi-wolf" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="demihuman_lion" id="demi-lion" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="demihuman_tiger" id="demi-tiger" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="demihuman_bear" id="demi-bear" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="beastman_fox" id="beast-fox" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beastman_cat" id="beast-cat" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beastman_wolf" id="beast-wolf" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beastman_lion" id="beast-lion" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beastman_tiger" id="beast-tiger" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beastman_bear" id="beast-bear" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="blue_spirit_grass" id="plant-blue" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="red_spirit_grass" id="plant-red" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="ten_blade_lotus" id="plant-lotus" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="yang_flower" id="plant-yang" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="skullfruit" id="plant-skull" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="yin_vine" id="plant-yin" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="bloodthistle" id="plant-blood" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="venomleaf" id="plant-venom" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="ether_lily" id="plant-ether" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="starbloom" id="plant-star" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="golden_bamboo" id="plant-bamboo" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="ant" id="crawl-ant" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="wasp" id="crawl-wasp" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="hornet" id="crawl-hornet" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="centipede" id="crawl-centipede" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="mantis" id="crawl-mantis" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="grasshopper" id="crawl-grasshopper" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="venomous_spider" id="crawl-venomous-spider" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="millipede" id="crawl-millipede" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="beetle" id="crawl-beetle" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="scorpion" id="crawl-scorpion" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="butterfly_moth" id="crawl-butterfly-moth" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="fleas" id="crawl-fleas" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="termite" id="crawl-termite" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="dragonfly" id="crawl-dragonfly" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="bee" id="crawl-bee" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="hunting_spider" id="crawl-hunting-spider" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="imp" id="demon-imp" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="quasit" id="demon-quasit" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="aberration" id="demon-aberration" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="charger" id="demon-charger" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="canine" id="beast-canine" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="vulpine" id="beast-vulpine" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="bovine" id="beast-bovine" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="ursine" id="beast-ursine" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="avian" id="beast-avian" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="boar" id="beast-boar" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="reptilian" id="beast-reptilian" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="feline" id="beast-feline" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="primate" id="beast-primate" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="other" id="beast-other" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="molten" id="slime-molten" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="glacial" id="slime-glacial" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="regular" id="slime-regular" class="sheet-hide">
+                    
+                    <input type="radio" name="attr_species" value="hososhi" id="yokai-hososhi" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="karasu_tengu" id="yokai-karasu" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="kejoro" id="yokai-kejoro" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="oni_agility" id="yokai-oni-agi" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="oni_brutality" id="yokai-oni-brut" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="oni_spirituality" id="yokai-oni-spirit" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="kitsune" id="yokai-kitsune" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="wani" id="yokai-wani" class="sheet-hide">
+                    <input type="radio" name="attr_species" value="kagutsuchi" id="yokai-kagutsuchi" class="sheet-hide">
+                    
+                    <!-- Left: Species Selection Grids -->
+                    <div class="sheet-species-selection">
+                        <!-- No Ancestry Selected -->
+                        <div class="sheet-species-section sheet-species-none-selected">
+                            <p class="sheet-info-message">Please select an ancestry in the previous step.</p>
+                        </div>
+                        
+                        <!-- Human - No Species -->
+                        <div class="sheet-species-section sheet-species-human">
+                            <p class="sheet-info-message">Humans do not have species variations.</p>
+                        </div>
+                        
+                        <!-- Demihuman Species -->
+                        <div class="sheet-species-section sheet-species-demihuman">
+                            <p class="sheet-note">Roll 1d10000 for Bloodline Quality</p>
+                            <input type="number" name="attr_bloodline_quality" placeholder="Enter roll result" style="width:100%;margin-bottom:10px;">
+                            
+                            <div class="sheet-species-grid">
+                                <label for="demi-fox">Fox</label>
+                                <label for="demi-cat">Cat</label>
+                                <label for="demi-wolf">Wolf</label>
+                                <label for="demi-lion">Lion</label>
+                                <label for="demi-tiger">Tiger</label>
+                                <label for="demi-bear">Bear</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Beastman Species -->
+                        <div class="sheet-species-section sheet-species-beastman">
+                            <p class="sheet-note">Roll 1d10000 for Bloodline Quality</p>
+                            <input type="number" name="attr_bloodline_quality" placeholder="Enter roll result" style="width:100%;margin-bottom:10px;">
+                            
+                            <div class="sheet-species-grid">
+                                <label for="beast-fox">Fox</label>
+                                <label for="beast-cat">Cat</label>
+                                <label for="beast-wolf">Wolf</label>
+                                <label for="beast-lion">Lion</label>
+                                <label for="beast-tiger">Tiger</label>
+                                <label for="beast-bear">Bear</label>
+                            </div>
+                        </div>
+                
+                <!-- Giant - No Species -->
+                <div class="sheet-species-section sheet-species-giant">
+                    <p class="sheet-info-message">Giants do not have species variations.</p>
+                </div>
+                
+                <!-- Fishman - No Species -->
+                <div class="sheet-species-section sheet-species-fishman">
+                    <p class="sheet-info-message">Fishmen do not have species variations (various sea beast descendants).</p>
+                </div>
+                        
+                        <!-- Plantkin Origins -->
+                        <div class="sheet-species-section sheet-species-plantkin">
+                            <div class="sheet-species-grid">
+                                <label for="plant-blue">Blue Spirit Grass</label>
+                                <label for="plant-red">Red Spirit Grass</label>
+                                <label for="plant-lotus">Ten Blade Lotus</label>
+                                <label for="plant-yang">Yang Flower</label>
+                                <label for="plant-skull">Skullfruit</label>
+                                <label for="plant-yin">Yin Vine</label>
+                                <label for="plant-blood">Bloodthistle</label>
+                                <label for="plant-venom">Venomleaf</label>
+                                <label for="plant-ether">Ether Lily</label>
+                                <label for="plant-star">Starbloom</label>
+                                <label for="plant-bamboo">Golden Bamboo</label>
+                            </div>
+                        </div>
+                
+                <!-- Lunarian - No Species -->
+                <div class="sheet-species-section sheet-species-lunarian">
+                    <p class="sheet-info-message">Lunarians do not have species variations.</p>
+                </div>
+                        
+                        <!-- Crawler Archetypes -->
+                        <div class="sheet-species-section sheet-species-crawler">
+                            <div class="sheet-species-grid">
+                                <label for="crawl-ant">Ant</label>
+                                <label for="crawl-wasp">Wasp</label>
+                                <label for="crawl-hornet">Hornet</label>
+                                <label for="crawl-centipede">Centipede</label>
+                                <label for="crawl-mantis">Mantis</label>
+                                <label for="crawl-grasshopper">Grasshopper</label>
+                                <label for="crawl-venomous-spider">Venomous Spider</label>
+                                <label for="crawl-millipede">Millipede</label>
+                                <label for="crawl-beetle">Beetle</label>
+                                <label for="crawl-scorpion">Scorpion</label>
+                                <label for="crawl-butterfly-moth">Butterfly/Moth</label>
+                                <label for="crawl-fleas">Fleas</label>
+                                <label for="crawl-termite">Termite</label>
+                                <label for="crawl-dragonfly">Dragonfly</label>
+                                <label for="crawl-bee">Bee</label>
+                                <label for="crawl-hunting-spider">Hunting Spider</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Demon Evolutions -->
+                        <div class="sheet-species-section sheet-species-demon">
+                            <div class="sheet-species-grid">
+                                <label for="demon-imp">Imp</label>
+                                <label for="demon-quasit">Quasit</label>
+                                <label for="demon-aberration">Aberration</label>
+                                <label for="demon-charger">Charger</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Sentient Beast Types -->
+                        <div class="sheet-species-section sheet-species-sentient-beast">
+                            <div class="sheet-species-grid">
+                                <label for="beast-canine">Canine</label>
+                                <label for="beast-vulpine">Vulpine</label>
+                                <label for="beast-bovine">Bovine</label>
+                                <label for="beast-ursine">Ursine</label>
+                                <label for="beast-avian">Avian</label>
+                                <label for="beast-boar">Boar</label>
+                                <label for="beast-reptilian">Reptilian</label>
+                                <label for="beast-feline">Feline</label>
+                                <label for="beast-primate">Primate</label>
+                                <label for="beast-other">Other</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Slimekin Variants -->
+                        <div class="sheet-species-section sheet-species-slimekin">
+                            <div class="sheet-species-grid">
+                                <label for="slime-molten">Molten</label>
+                                <label for="slime-glacial">Glacial</label>
+                                <label for="slime-regular">Regular</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Solarian - No Species -->
+                        <div class="sheet-species-section sheet-species-solarian">
+                            <p class="sheet-info-message">Solarians do not have species variations.</p>
+                        </div>
+                        
+                        <!-- Yokai Types -->
+                        <div class="sheet-species-section sheet-species-yokai">
+                            <div class="sheet-species-grid">
+                                <label for="yokai-hososhi">Hososhi</label>
+                                <label for="yokai-karasu">Karasu Tengu</label>
+                                <label for="yokai-kejoro">Kejoro</label>
+                                <label for="yokai-oni-agi">Oni (Agility)</label>
+                                <label for="yokai-oni-brut">Oni (Brutality)</label>
+                                <label for="yokai-oni-spirit">Oni (Spirituality)</label>
+                                <label for="yokai-kitsune">Kitsune</label>
+                                <label for="yokai-wani">Wani</label>
+                                <label for="yokai-kagutsuchi">Kagutsuchi</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Winged Race - No Species Yet -->
+                        <div class="sheet-species-section sheet-species-winged-race">
+                            <p class="sheet-info-message">Winged Race species are not yet defined.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Species Info Display -->
+                    <div class="sheet-species-display">
+                        <div class="sheet-species-info-placeholder">
+                            <p class="sheet-info-message">Select a species to view details</p>
+                        </div>
+                        
+                        <!-- Demihuman Species Info -->
+                        <div class="sheet-species-info sheet-species-info-demi-fox"><h3>Fox</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-cat"><h3>Cat</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-wolf"><h3>Wolf</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-lion"><h3>Lion</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-tiger"><h3>Tiger</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-bear"><h3>Bear</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Beastman Species Info -->
+                        <div class="sheet-species-info sheet-species-info-beast-fox"><h3>Fox</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-cat"><h3>Cat</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-wolf"><h3>Wolf</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-lion"><h3>Lion</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-tiger"><h3>Tiger</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-bear"><h3>Bear</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Plantkin Species Info -->
+                        <div class="sheet-species-info sheet-species-info-plant-blue"><h3>Blue Spirit Grass</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-red"><h3>Red Spirit Grass</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-lotus"><h3>Ten Blade Lotus</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-yang"><h3>Yang Flower</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-skull"><h3>Skullfruit</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-yin"><h3>Yin Vine</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-blood"><h3>Bloodthistle</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-venom"><h3>Venomleaf</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-ether"><h3>Ether Lily</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-star"><h3>Starbloom</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-plant-bamboo"><h3>Golden Bamboo</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Crawler Species Info -->
+                        <div class="sheet-species-info sheet-species-info-crawl-ant"><h3>Ant</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-wasp"><h3>Wasp</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-hornet"><h3>Hornet</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-centipede"><h3>Centipede</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-mantis"><h3>Mantis</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-grasshopper"><h3>Grasshopper</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-venomous-spider"><h3>Venomous Spider</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-millipede"><h3>Millipede</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-beetle"><h3>Beetle</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-scorpion"><h3>Scorpion</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-butterfly-moth"><h3>Butterfly/Moth</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-fleas"><h3>Fleas</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-termite"><h3>Termite</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-dragonfly"><h3>Dragonfly</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-bee"><h3>Bee</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-crawl-hunting-spider"><h3>Hunting Spider</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Demon Species Info -->
+                        <div class="sheet-species-info sheet-species-info-demon-imp"><h3>Imp</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demon-quasit"><h3>Quasit</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demon-aberration"><h3>Aberration</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demon-charger"><h3>Charger</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Sentient Beast Species Info -->
+                        <div class="sheet-species-info sheet-species-info-beast-canine"><h3>Canine</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-vulpine"><h3>Vulpine</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-bovine"><h3>Bovine</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-ursine"><h3>Ursine</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-avian"><h3>Avian</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-boar"><h3>Boar</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-reptilian"><h3>Reptilian</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-feline"><h3>Feline</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-primate"><h3>Primate</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-other"><h3>Other</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Slimekin Species Info -->
+                        <div class="sheet-species-info sheet-species-info-slime-molten"><h3>Molten</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-slime-glacial"><h3>Glacial</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-slime-regular"><h3>Regular</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Yokai Species Info -->
+                        <div class="sheet-species-info sheet-species-info-yokai-hososhi"><h3>Hososhi</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-karasu"><h3>Karasu Tengu</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-kejoro"><h3>Kejoro</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-oni-agi"><h3>Oni (Agility)</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-oni-brut"><h3>Oni (Brutality)</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-oni-spirit"><h3>Oni (Spirituality)</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-kitsune"><h3>Kitsune</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-wani"><h3>Wani</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-yokai-kagutsuchi"><h3>Kagutsuchi</h3><p><em>WIP</em></p></div>
+                        
+                        <!-- Human/Giant/Fishman/Lunarian/Solarian/Winged Race Info -->
+                        <div class="sheet-species-info sheet-species-info-human">
+                            <p class="sheet-info-message">Humans do not have species variations.</p>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-giant">
+                            <p class="sheet-info-message">Giants do not have species variations.</p>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-fishman">
+                            <p class="sheet-info-message">Fishmen do not have species variations.</p>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-lunarian">
+                            <p class="sheet-info-message">Lunarians do not have species variations.</p>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-solarian">
+                            <p class="sheet-info-message">Solarians do not have species variations.</p>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-winged-race">
+                            <p class="sheet-info-message">Winged Race species are not yet defined.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="act_prev_step" class="sheet-btn-prev">Previous</button>
+                    <button type="action" name="act_next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
+            <!-- Completion -->
+            <div class="sheet-creation-step sheet-creation-complete">
+                <h2>Character Creation Complete</h2>
+                <p>Your character has been created successfully!</p>
+                <button type="action" name="act_complete_char_creation" class="sheet-done-button">DONE</button>
+            </div>
+        </div>
+
+        <!-- Mortal Page -->
+        <div class="sheet-page sheet-page-mortal">
+            <h2>Mortal Character</h2>
+            <p>Mortal character stats and information.</p>
+        </div>
+
+        <!-- Cultivator Page -->
+        <div class="sheet-page sheet-page-cultivator">
+            <h2>Cultivator Character</h2>
+            <p>Cultivator character stats and information.</p>
+        </div>
+
+        <!-- Beast Page -->
+        <div class="sheet-page sheet-page-beast">
+            <h2>Beast Character</h2>
+            <p>Beast character stats and information.</p>
+        </div>
+
+        <!-- Combat Page -->
+        <div class="sheet-page sheet-page-combat">
+            <h2>Combat</h2>
+            <p>Combat stats and actions.</p>
+        </div>
+
+        <!-- Techniques Page -->
+        <div class="sheet-page sheet-page-techniques">
+            <h2>Techniques</h2>
+            <p>Character techniques and abilities.</p>
+        </div>
+
+        <!-- Bio Page -->
+        <div class="sheet-page sheet-page-bio">
+            <h2>Biography</h2>
+            <textarea name="attr_biography" placeholder="Character biography..."></textarea>
+        </div>
+
+        <!-- Notes Page -->
+        <div class="sheet-page sheet-page-notes">
+            <h2>Notes</h2>
+            <textarea name="attr_notes" placeholder="Character notes..."></textarea>
+        </div>
+
+        <!-- Inventory Page -->
+        <div class="sheet-page sheet-page-inventory">
+            <h2>Inventory</h2>
+            <p>Character inventory and equipment.</p>
+        </div>
+
+        <!-- Options Page -->
+        <div class="sheet-page sheet-page-options">
+            <h2>Options</h2>
+            <div class="sheet-options-content">
+                <div class="sheet-option">
+                    <label>
+                        <input type="checkbox" name="attr_is_beast" value="1">
+                        <span>Beast Character Mode</span>
+                    </label>
+                </div>
+                <div class="sheet-option">
+                    <button type="action" name="act_level_realm_up">Level Up / Realm Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sheet Workers -->
+<script type="text/worker">
+// Initialize sheet on first open
+on("sheet:opened", function() {
+    getAttrs(["show_char_creation", "character_type", "is_beast", "creation_step"], function(values) {
+        if (!values.show_char_creation || values.show_char_creation === "1") {
+            setAttrs({ 
+                page: "char_creation",
+                creation_step: values.creation_step || "0"
+            });
+            updateCreationStep(values.creation_step || "0");
+        } else {
+            if (values.is_beast === "1") {
+                setAttrs({ page: "beast" });
+            } else if (values.character_type === "cultivator") {
+                setAttrs({ page: "cultivator" });
+            } else {
+                setAttrs({ page: "mortal" });
+            }
+        }
+    });
+});
+
+// Update creation step visibility
+function updateCreationStep(step) {
+    console.log("Current step:", step);
+}
+
+// Handle step tab clicks
+on("clicked:step_tab_0", function() {
+    setAttrs({ creation_step: "0" });
+});
+
+on("clicked:step_tab_1", function() {
+    setAttrs({ creation_step: "1" });
+});
+
+on("clicked:step_tab_2", function() {
+    setAttrs({ creation_step: "2" });
+});
+
+on("clicked:step_tab_complete", function() {
+    setAttrs({ creation_step: "complete" });
+});
+
+// Handle creation step changes
+on("change:creation_step", function(eventInfo) {
+    updateCreationStep(eventInfo.newValue);
+});
+
+// Handle Next button
+on("clicked:next_step", function() {
+    getAttrs(["creation_step"], function(values) {
+        const currentStep = parseInt(values.creation_step) || 0;
+        const nextStep = currentStep + 1;
+        setAttrs({ creation_step: nextStep.toString() });
+    });
+});
+
+// Handle Previous button
+on("clicked:prev_step", function() {
+    getAttrs(["creation_step"], function(values) {
+        const currentStep = parseInt(values.creation_step) || 0;
+        const prevStep = Math.max(0, currentStep - 1);
+        setAttrs({ creation_step: prevStep.toString() });
+    });
+});
+
+// Handle Cancel button
+on("clicked:cancel_creation", function() {
+    setAttrs({
+        show_char_creation: "0",
+        page: "mortal",
+        character_type: "mortal",
+        creation_step: "0"
+    });
+});
+
+// Handle DONE button on character creation page
+on("clicked:complete_char_creation", function() {
+    setAttrs({
+        show_char_creation: "0",
+        page: "mortal",
+        character_type: "mortal",
+        creation_step: "0"
+    });
+});
+
+// Handle Level Up / Realm Up button click
+on("clicked:level_realm_up", function() {
+    setAttrs({
+        level_up_mode: "1",
+        show_char_creation: "1",
+        page: "char_creation",
+        creation_step: "0"
+    });
+});
+
+// Handle character type changes (mortal/cultivator)
+on("change:character_type", function(eventInfo) {
+    const charType = eventInfo.newValue;
+    
+    getAttrs(["is_beast", "page"], function(values) {
+        if (values.is_beast !== "1") {
+            const universalPages = ["combat", "techniques", "bio", "notes", "inventory", "options", "char_creation"];
+            if (!universalPages.includes(values.page)) {
+                setAttrs({ page: charType });
+            }
+        }
+    });
+});
+
+// Handle beast mode toggle
+on("change:is_beast", function(eventInfo) {
+    const isBeast = eventInfo.newValue;
+    
+    getAttrs(["page"], function(values) {
+        if (isBeast === "1") {
+            if (values.page === "mortal" || values.page === "cultivator") {
+                setAttrs({ page: "beast" });
+            }
+        } else {
+            if (values.page === "beast") {
+                getAttrs(["character_type"], function(vals) {
+                    setAttrs({ page: vals.character_type || "mortal" });
+                });
+            }
+        }
+    });
+});
+
+// Handle character creation completion
+on("change:show_char_creation", function(eventInfo) {
+    if (eventInfo.newValue === "0") {
+        getAttrs(["character_type", "is_beast"], function(values) {
+            if (values.is_beast === "1") {
+                setAttrs({ page: "beast" });
+            } else {
+                setAttrs({ page: values.character_type || "mortal" });
+            }
+        });
+    }
+});
+</script>
