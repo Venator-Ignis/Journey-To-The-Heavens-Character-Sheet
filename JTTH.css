@@ -29,23 +29,60 @@ input.sheet-page-radio {
 
 /* Roll Settings */
 .sheet-roll-settings {
+    position: absolute;
+    top: 10px;
+    right: 35px;
+    z-index: 1000;
     display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    background: linear-gradient(135deg, #d4af37 0%, #f4e4b8 50%, #d4af37 100%);
-    border: 2px solid #8b6914;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    gap: 0;
+    padding: 0;
+    background: transparent;
 }
 
 .sheet-roll-settings label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    position: relative;
     cursor: pointer;
-    color: #2c1810;
-    font-weight: 600;
+}
+
+.sheet-roll-settings label span {
+    display: block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #ddd;
+    color: #909090;
+    border: 1px solid #b7b7b7;
+    border-left: 0;
+    width: 100%;
+}
+
+.sheet-roll-settings label:first-of-type span {
+    border-left: 1px solid #b7b7b7;
+    border-radius: 4px 0 0 4px;
+}
+
+.sheet-roll-settings label:last-of-type span {
+    border-radius: 0 4px 4px 0;
+}
+
+.sheet-roll-settings label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.sheet-roll-settings label input[type="radio"]:checked ~ span {
+    background: #555;
+    color: white;
+    border-color: #555;
+}
+
+.sheet-roll-settings label input[type="radio"]:not(:checked):hover ~ span {
+    color: black;
 }
 
 /* Header */
@@ -542,6 +579,258 @@ input[name="attr_creation_step"][value="complete"] ~ .sheet-creation-complete {
     transform: translateY(-2px);
 }
 
+/* Stats Step */
+.sheet-stats-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.sheet-stats-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sheet-stats-display {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.2) 100%);
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+}
+
+.sheet-stat-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.sheet-stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a472a;
+}
+
+.sheet-stat-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #8b6914;
+}
+
+.sheet-hp-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(26, 71, 42, 0.1);
+    border: 2px solid #1a472a;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.sheet-hp-display span {
+    font-size: 20px;
+    color: #1a472a;
+}
+
+.sheet-stat-method {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sheet-stat-method select {
+    padding: 8px;
+    border: 2px solid #8b6914;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sheet-method-standard,
+.sheet-method-roll,
+.sheet-method-custom {
+    display: none;
+}
+
+input[name="attr_stat_method"][value="standard"] ~ .sheet-stats-layout .sheet-method-standard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[name="attr_stat_method"][value="roll"] ~ .sheet-stats-layout .sheet-method-roll {
+    display: block;
+}
+
+input[name="attr_stat_method"][value="custom"] ~ .sheet-stats-layout .sheet-method-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sheet-btn-clear {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+    color: #f4e4b8;
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.sheet-btn-clear:hover {
+    background: linear-gradient(135deg, #a0522d 0%, #b8651f 100%);
+    transform: translateY(-2px);
+}
+
+.sheet-stat-assignment {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sheet-stat-assignment > label {
+    font-weight: bold;
+    color: #2c1810;
+}
+
+.sheet-stat-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.sheet-stat-buttons label {
+    flex: 1;
+    position: relative;
+}
+
+.sheet-stat-buttons input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.sheet-stat-buttons span {
+    display: block;
+    padding: 8px;
+    text-align: center;
+    background: #ddd;
+    border: 2px solid #8b6914;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.sheet-stat-buttons input[type="radio"]:checked ~ span {
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    color: #f4e4b8;
+    border-color: #d4af37;
+}
+
+.sheet-stat-buttons input[type="radio"]:hover ~ span {
+    background: #c9a961;
+    color: #2c1810;
+}
+
+.sheet-method-roll button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    color: #f4e4b8;
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.sheet-method-roll button:hover {
+    background: linear-gradient(135deg, #2d5a3d 0%, #3d6a4d 100%);
+    transform: translateY(-2px);
+}
+
+.sheet-custom-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+}
+
+.sheet-custom-stat label {
+    font-weight: bold;
+    color: #2c1810;
+}
+
+.sheet-custom-stat input {
+    width: 60px;
+    padding: 6px;
+    border: 2px solid #8b6914;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sheet-stats-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(245, 240, 232, 0.5);
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.sheet-stats-info h3 {
+    margin: 0 0 10px 0;
+    color: #1a472a;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 8px;
+}
+
+.sheet-stat-info-block {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 3px solid #8b6914;
+    border-radius: 4px;
+}
+
+.sheet-stat-info-block h4 {
+    margin: 0 0 8px 0;
+    color: #1a472a;
+}
+
+.sheet-stat-info-block p {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.sheet-stat-info-block ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.sheet-stat-info-block li {
+    margin: 4px 0;
+    font-size: 13px;
+}
+
 /* Options Page */
 .sheet-options-content {
     display: flex;
@@ -871,6 +1160,30 @@ input[name="attr_slimekin_type"]:checked + label {
     border-radius: 5px;
     font-size: 14px;
     margin-top: 10px;
+}
+
+/* Roll Bloodline Quality Button */
+button[name="roll_bloodline_quality"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    color: #f4e4b8;
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.3s;
+}
+
+button[name="roll_bloodline_quality"]:hover {
+    background: linear-gradient(135deg, #2d5a3d 0%, #3d6a4d 100%);
+    transform: translateY(-2px);
+    color: #f4e4b8;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .sheet-info-message {
@@ -1592,4 +1905,183 @@ input[name="attr_slimekin_type"]:checked + label {
     text-align: center;
     font-weight: bold;
     background: rgba(212, 175, 55, 0.1);
+}
+
+
+/* Roll Template - Bloodline Quality */
+.sheet-rolltemplate-bloodline {
+    background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 100%);
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Georgia', serif;
+    max-width: 350px;
+    margin: 5px 0;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-container {
+    padding: 0;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-header {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    padding: 8px 12px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid #b8941f;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c1810;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-body {
+    padding: 10px 12px;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-row:last-child {
+    border-bottom: none;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-label {
+    font-weight: 600;
+    color: #d4af37;
+    font-size: 13px;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-value {
+    color: #f4e4c1;
+    font-size: 13px;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-main-roll {
+    background: rgba(212, 175, 55, 0.15);
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 4px;
+    border: 1px solid #d4af37;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-roll {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f4d03f;
+    text-shadow: 0 0 6px rgba(244, 208, 63, 0.6);
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-footer {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-quality-guide {
+    color: #f4e4c1;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-quality-guide strong {
+    color: #d4af37;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.sheet-rolltemplate-bloodline .sheet-template-quality-guide div {
+    margin: 1px 0;
+    font-family: monospace;
+}
+
+/* Roll Template - Stats Roll */
+.sheet-rolltemplate-statsroll {
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+    border: 3px solid #d4af37;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    color: #f4e4b8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-container {
+    padding: 0;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-header {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 2px solid #d4af37;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d4af37;
+    text-transform: uppercase;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-body {
+    padding: 12px;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-row {
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-label {
+    font-weight: bold;
+    color: #d4af37;
+}
+
+.sheet-rolltemplate-statsroll .sheet-template-value {
+    color: #f4e4b8;
+}
+
+.sheet-stats-roll-table {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.sheet-stat-roll-cell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+}
+
+.sheet-stat-roll-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #d4af37;
+    margin-bottom: 4px;
+}
+
+.sheet-stat-roll-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f4e4b8;
+}
+
+.textchatcontainer .inlinerollresult {
+    background-color: none;
+    border-bottom: 2px solid #d4af37;
 }

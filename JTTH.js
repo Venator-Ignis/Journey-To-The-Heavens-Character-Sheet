@@ -3,17 +3,17 @@
 const ancestryModifiers = {
     human: { cultivation: 30, lifespan: -25 },
     demihuman: { cultivation: 10, lifespan: -10 },
-    beastman: { cultivation: 0, lifespan: 0 },
+    beastman: { cultivation: -10, lifespan: 30 },
     giant: { cultivation: 10, lifespan: 50 },
     fishman: { cultivation: 0, lifespan: 0 },
-    lunarian: { cultivation: 0, lifespan: 0 },
-    solarian: { cultivation: 0, lifespan: 0 },
-    winged: { cultivation: 0, lifespan: 0 },
-    plantkin: { cultivation: 0, lifespan: 0 },
-    crawler: { cultivation: 0, lifespan: 0 },
+    lunarian: { cultivation: 30, lifespan: 30 },
+    solarian: { cultivation: 30, lifespan: 30 },
+    winged: { cultivation: 30, lifespan: 30 },
+    plantkin: { cultivation: 10, lifespan: 40 },
+    crawler: { cultivation: 30, lifespan: -15 },
     demon: { cultivation: 0, lifespan: 50 },
     sentient_beast: { cultivation: 0, lifespan: 0 },
-    slimekin: { cultivation: 0, lifespan: 0 },
+    slimekin: { cultivation: 10, lifespan: 10 },
     yokai: { cultivation: 10, lifespan: 30 }
 };
 
@@ -25,14 +25,14 @@ on("change:creation_step", function(eventInfo) {
 on("clicked:act_next_step", function() {
     getAttrs(["creation_step"], function(v) {
         const current = parseInt(v.creation_step) || 0;
-        const next = current === 3 ? "complete" : (current + 1).toString();
+        const next = current === 4 ? "complete" : (current + 1).toString();
         setAttrs({ creation_step: next });
     });
 });
 
 on("clicked:act_prev_step", function() {
     getAttrs(["creation_step"], function(v) {
-        const current = v.creation_step === "complete" ? 3 : (parseInt(v.creation_step) || 0);
+        const current = v.creation_step === "complete" ? 4 : (parseInt(v.creation_step) || 0);
         const prev = Math.max(0, current - 1).toString();
         setAttrs({ creation_step: prev });
     });

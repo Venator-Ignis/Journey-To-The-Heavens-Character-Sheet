@@ -21,11 +21,11 @@
     <div class="sheet-roll-settings">
         <label>
             <input type="radio" name="attr_whisper" value="" checked>
-            <span>Public</span>
+            <span title="@{whispertoggle}">Public</span>
         </label>
         <label>
             <input type="radio" name="attr_whisper" value="/w gm ">
-            <span>To GM</span>
+            <span title="@{whispertoggle}">To GM</span>
         </label>
     </div>
 
@@ -71,6 +71,7 @@
                 <button type="action" name="act_step_tab_0" class="sheet-step-tab sheet-step-tab-0">Welcome</button>
                 <button type="action" name="act_step_tab_1" class="sheet-step-tab sheet-step-tab-1">Ancestry</button>
                 <button type="action" name="act_step_tab_2" class="sheet-step-tab sheet-step-tab-2">Species</button>
+                <button type="action" name="act_step_tab_3" class="sheet-step-tab sheet-step-tab-3">Stats</button>
                 <button type="action" name="act_step_tab_complete" class="sheet-step-tab sheet-step-tab-complete">Complete</button>
             </div>
             
@@ -779,8 +780,9 @@
                         
                         <!-- Demihuman Species -->
                         <div class="sheet-species-section sheet-species-demihuman">
-                            <p class="sheet-note">Roll 1d10000 for Bloodline Quality</p>
-                            <input type="number" name="attr_bloodline_quality" placeholder="Enter roll result" style="width:100%;margin-bottom:10px;">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Demihuman}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
                             
                             <div class="sheet-species-grid">
                                 <label for="demi-fox">Fox</label>
@@ -794,8 +796,9 @@
                         
                         <!-- Beastman Species -->
                         <div class="sheet-species-section sheet-species-beastman">
-                            <p class="sheet-note">Roll 1d10000 for Bloodline Quality</p>
-                            <input type="number" name="attr_bloodline_quality" placeholder="Enter roll result" style="width:100%;margin-bottom:10px;">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Beastman}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
                             
                             <div class="sheet-species-grid">
                                 <label for="beast-fox">Fox</label>
@@ -809,16 +812,26 @@
                 
                 <!-- Giant - No Species -->
                 <div class="sheet-species-section sheet-species-giant">
+                    <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Giant}} {{roll=[[1d10000]]}}">
+                        Roll Bloodline Quality (1d10000)
+                    </button>
                     <p class="sheet-info-message">Giants do not have species variations.</p>
                 </div>
                 
                 <!-- Fishman - No Species -->
                 <div class="sheet-species-section sheet-species-fishman">
+                    <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Fishman}} {{roll=[[1d10000]]}}">
+                        Roll Bloodline Quality (1d10000)
+                    </button>
                     <p class="sheet-info-message">Fishmen do not have species variations (various sea beast descendants).</p>
                 </div>
                         
                         <!-- Plantkin Origins -->
                         <div class="sheet-species-section sheet-species-plantkin">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Plantkin}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="plant-blue">Blue Spirit Grass</label>
                                 <label for="plant-red">Red Spirit Grass</label>
@@ -836,11 +849,18 @@
                 
                 <!-- Lunarian - No Species -->
                 <div class="sheet-species-section sheet-species-lunarian">
+                    <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Lunarian}} {{roll=[[1d10000]]}}">
+                        Roll Bloodline Quality (1d10000)
+                    </button>
                     <p class="sheet-info-message">Lunarians do not have species variations.</p>
                 </div>
                         
                         <!-- Crawler Archetypes -->
                         <div class="sheet-species-section sheet-species-crawler">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Crawler}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="crawl-ant">Ant</label>
                                 <label for="crawl-wasp">Wasp</label>
@@ -863,6 +883,10 @@
                         
                         <!-- Demon Evolutions -->
                         <div class="sheet-species-section sheet-species-demon">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Demon}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="demon-imp">Imp</label>
                                 <label for="demon-quasit">Quasit</label>
@@ -873,6 +897,10 @@
                         
                         <!-- Sentient Beast Types -->
                         <div class="sheet-species-section sheet-species-sentient-beast">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Sentient Beast}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="beast-canine">Canine</label>
                                 <label for="beast-vulpine">Vulpine</label>
@@ -889,6 +917,10 @@
                         
                         <!-- Slimekin Variants -->
                         <div class="sheet-species-section sheet-species-slimekin">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Slimekin}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="slime-molten">Molten</label>
                                 <label for="slime-glacial">Glacial</label>
@@ -898,11 +930,18 @@
                         
                         <!-- Solarian - No Species -->
                         <div class="sheet-species-section sheet-species-solarian">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Solarian}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
                             <p class="sheet-info-message">Solarians do not have species variations.</p>
                         </div>
                         
                         <!-- Yokai Types -->
                         <div class="sheet-species-section sheet-species-yokai">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Yokai}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
+                            
                             <div class="sheet-species-grid">
                                 <label for="yokai-hososhi">Hososhi</label>
                                 <label for="yokai-karasu">Karasu Tengu</label>
@@ -918,6 +957,9 @@
                         
                         <!-- Winged Race - No Species Yet -->
                         <div class="sheet-species-section sheet-species-winged-race">
+                            <button type="roll" name="roll_bloodline_quality" value="@{whisper}&{template:bloodline} {{name=@{character_name}}} {{ancestry=Winged Race}} {{roll=[[1d10000]]}}">
+                                Roll Bloodline Quality (1d10000)
+                            </button>
                             <p class="sheet-info-message">Winged Race species are not yet defined.</p>
                         </div>
                     </div>
@@ -929,20 +971,164 @@
                         </div>
                         
                         <!-- Demihuman Species Info -->
-                        <div class="sheet-species-info sheet-species-info-demi-fox"><h3>Fox</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-demi-cat"><h3>Cat</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-demi-wolf"><h3>Wolf</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-demi-lion"><h3>Lion</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-demi-tiger"><h3>Tiger</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-demi-bear"><h3>Bear</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-demi-fox">
+                            <h3>Fox (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-demi-cat">
+                            <h3>Cat (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-demi-wolf">
+                            <h3>Wolf (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-demi-lion">
+                            <h3>Lion (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-demi-tiger">
+                            <h3>Tiger (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-demi-bear">
+                            <h3>Bear (Demihuman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
                         
                         <!-- Beastman Species Info -->
-                        <div class="sheet-species-info sheet-species-info-beast-fox"><h3>Fox</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-beast-cat"><h3>Cat</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-beast-wolf"><h3>Wolf</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-beast-lion"><h3>Lion</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-beast-tiger"><h3>Tiger</h3><p><em>WIP</em></p></div>
-                        <div class="sheet-species-info sheet-species-info-beast-bear"><h3>Bear</h3><p><em>WIP</em></p></div>
+                        <div class="sheet-species-info sheet-species-info-beast-fox">
+                            <h3>Fox (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-beast-cat">
+                            <h3>Cat (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-beast-wolf">
+                            <h3>Wolf (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-beast-lion">
+                            <h3>Lion (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-beast-tiger">
+                            <h3>Tiger (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-species-info sheet-species-info-beast-bear">
+                            <h3>Bear (Beastman)</h3>
+                            <p><em>WIP - Species details pending</em></p>
+                            <hr>
+                            <p><strong>Bloodline Quality Bonuses:</strong></p>
+                            <ul>
+                                <li><strong>Substandard (1-2000):</strong> WIP</li>
+                                <li><strong>Basic (2001-4000):</strong> WIP</li>
+                                <li><strong>Intermediate (4001-7000):</strong> WIP</li>
+                                <li><strong>Advanced (7001-9000):</strong> WIP</li>
+                                <li><strong>Ancient (9001-10000):</strong> WIP</li>
+                            </ul>
+                        </div>
                         
                         <!-- Plantkin Species Info -->
                         <div class="sheet-species-info sheet-species-info-plant-blue"><h3>Blue Spirit Grass</h3><p><em>WIP</em></p></div>
@@ -1037,6 +1223,202 @@
                 </div>
             </div>
 
+            <!-- Step 3: Stats Assignment -->
+            <div class="sheet-creation-step sheet-creation-stats">
+                <h2>Step 3: Assign Your Stats</h2>
+                
+                <input type="hidden" name="attr_stat_method" value="standard">
+                
+                <div class="sheet-stats-layout">
+                    <!-- Choice Side -->
+                    <div class="sheet-stats-choice">
+                        <!-- Current Stats Display -->
+                        <div class="sheet-stats-display">
+                            <div class="sheet-stat-display">
+                                <span class="sheet-stat-value" name="attr_power_base">1</span>
+                                <span class="sheet-stat-name">PWR</span>
+                            </div>
+                            <div class="sheet-stat-display">
+                                <span class="sheet-stat-value" name="attr_agility_base">1</span>
+                                <span class="sheet-stat-name">AGI</span>
+                            </div>
+                            <div class="sheet-stat-display">
+                                <span class="sheet-stat-value" name="attr_vitality_base">1</span>
+                                <span class="sheet-stat-name">VIT</span>
+                            </div>
+                            <div class="sheet-stat-display">
+                                <span class="sheet-stat-value" name="attr_mental_base">1</span>
+                                <span class="sheet-stat-name">MTL</span>
+                            </div>
+                            <div class="sheet-stat-display">
+                                <span class="sheet-stat-value" name="attr_qicontrol_base">1</span>
+                                <span class="sheet-stat-name">QIC</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Hit Points -->
+                        <div class="sheet-hp-display">
+                            <label>Hit Points:</label>
+                            <span name="attr_hp_max">10</span>
+                        </div>
+                        
+                        <!-- Assignment Method -->
+                        <div class="sheet-stat-method">
+                            <label>Assignment Method:</label>
+                            <select name="attr_stat_method">
+                                <option value="standard" selected>Standard Array</option>
+                                <option value="roll">Roll Stats</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Standard Array -->
+                        <div class="sheet-method-standard">
+                            <button type="action" name="clear_stat_assignment" class="sheet-btn-clear">Clear Assignment</button>
+                            
+                            <div class="sheet-stat-assignment">
+                                <label>Power</label>
+                                <div class="sheet-stat-buttons">
+                                    <label><input type="radio" name="attr_power_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_power_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_power_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_power_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_power_array" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="attr_power_array" value="3"><span>3</span></label>
+                                </div>
+                            </div>
+                            
+                            <div class="sheet-stat-assignment">
+                                <label>Agility</label>
+                                <div class="sheet-stat-buttons">
+                                    <label><input type="radio" name="attr_agility_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_agility_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_agility_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_agility_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_agility_array" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="attr_agility_array" value="3"><span>3</span></label>
+                                </div>
+                            </div>
+                            
+                            <div class="sheet-stat-assignment">
+                                <label>Vitality</label>
+                                <div class="sheet-stat-buttons">
+                                    <label><input type="radio" name="attr_vitality_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_vitality_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_vitality_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_vitality_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_vitality_array" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="attr_vitality_array" value="3"><span>3</span></label>
+                                </div>
+                            </div>
+                            
+                            <div class="sheet-stat-assignment">
+                                <label>Mental</label>
+                                <div class="sheet-stat-buttons">
+                                    <label><input type="radio" name="attr_mental_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_mental_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_mental_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_mental_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_mental_array" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="attr_mental_array" value="3"><span>3</span></label>
+                                </div>
+                            </div>
+                            
+                            <div class="sheet-stat-assignment">
+                                <label>Qi Control</label>
+                                <div class="sheet-stat-buttons">
+                                    <label><input type="radio" name="attr_qicontrol_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_qicontrol_array" value="1"><span>1</span></label>
+                                    <label><input type="radio" name="attr_qicontrol_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_qicontrol_array" value="2"><span>2</span></label>
+                                    <label><input type="radio" name="attr_qicontrol_array" value="3"><span>3</span></label>
+                                    <label><input type="radio" name="attr_qicontrol_array" value="3"><span>3</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Roll Stats -->
+                        <div class="sheet-method-roll">
+                            <button type="roll" name="roll_stats" value="&{template:statstoll} {{character=@{character_name}}} {{pwr=[[1d3]]}} {{agi=[[1d3]]}} {{vit=[[1d3]]}} {{mtl=[[1d3]]}} {{qic=[[1d3]]}} {{app=[[1d3]]}}">Roll Stats (6d3)</button>
+                        </div>
+                        
+                        <!-- Custom Stats -->
+                        <div class="sheet-method-custom">
+                            <div class="sheet-custom-stat">
+                                <label>Power</label>
+                                <input type="number" name="attr_power_custom" value="1" min="1" max="3">
+                            </div>
+                            <div class="sheet-custom-stat">
+                                <label>Agility</label>
+                                <input type="number" name="attr_agility_custom" value="1" min="1" max="3">
+                            </div>
+                            <div class="sheet-custom-stat">
+                                <label>Vitality</label>
+                                <input type="number" name="attr_vitality_custom" value="1" min="1" max="3">
+                            </div>
+                            <div class="sheet-custom-stat">
+                                <label>Mental</label>
+                                <input type="number" name="attr_mental_custom" value="1" min="1" max="3">
+                            </div>
+                            <div class="sheet-custom-stat">
+                                <label>Qi Control</label>
+                                <input type="number" name="attr_qicontrol_custom" value="1" min="1" max="3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Side -->
+                    <div class="sheet-stats-info">
+                        <h3>Stat Assignment Guide</h3>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>How to Determine Stats</h4>
+                            <p>Choose one of three methods to assign your starting stats:</p>
+                            <ul>
+                                <li><strong>Standard Array:</strong> Assign the values 1, 1, 2, 2, 3, 3 to your stats</li>
+                                <li><strong>Roll Stats:</strong> Roll 6d3 to randomly determine your stats</li>
+                                <li><strong>Custom:</strong> Manually enter stat values (GM approval required)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>Power (PWR)</h4>
+                            <p><strong>Measures:</strong> Physical strength and raw power</p>
+                            <p><strong>Important for:</strong> Melee damage, carrying capacity, physical techniques</p>
+                        </div>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>Agility (AGI)</h4>
+                            <p><strong>Measures:</strong> Speed, reflexes, and dexterity</p>
+                            <p><strong>Important for:</strong> Evasion, initiative, ranged attacks, movement speed</p>
+                        </div>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>Vitality (VIT)</h4>
+                            <p><strong>Measures:</strong> Constitution, endurance, and health</p>
+                            <p><strong>Important for:</strong> Hit points, stamina, resistance to injury and poison</p>
+                        </div>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>Mental Strength (MTL)</h4>
+                            <p><strong>Measures:</strong> Willpower, focus, and mental fortitude</p>
+                            <p><strong>Important for:</strong> Resisting mental attacks, cultivation comprehension, technique learning</p>
+                        </div>
+                        
+                        <div class="sheet-stat-info-block">
+                            <h4>Qi Control (QIC)</h4>
+                            <p><strong>Measures:</strong> Ability to manipulate and control Qi</p>
+                            <p><strong>Important for:</strong> Technique effectiveness, Qi efficiency, cultivation speed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="prev_step" class="sheet-btn-prev">Previous</button>
+                    <button type="action" name="next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
             <!-- Completion -->
             <div class="sheet-creation-step sheet-creation-complete">
                 <h2>Character Creation Complete</h2>
@@ -1111,8 +1493,103 @@
     </div>
 </div>
 
+<!-- Roll Templates -->
+<rolltemplate class="sheet-rolltemplate-bloodline">
+    <div class="sheet-template-container">
+        <div class="sheet-template-header">
+            <span class="sheet-template-title">Bloodline Quality Roll</span>
+        </div>
+        <div class="sheet-template-body">
+            {{#name}}
+            <div class="sheet-template-row">
+                <span class="sheet-template-label">Character:</span>
+                <span class="sheet-template-value">{{name}}</span>
+            </div>
+            {{/name}}
+            {{#ancestry}}
+            <div class="sheet-template-row">
+                <span class="sheet-template-label">Ancestry:</span>
+                <span class="sheet-template-value">{{ancestry}}</span>
+            </div>
+            {{/ancestry}}
+            {{#species}}
+            <div class="sheet-template-row">
+                <span class="sheet-template-label">Species:</span>
+                <span class="sheet-template-value">{{species}}</span>
+            </div>
+            {{/species}}
+            {{#roll}}
+            <div class="sheet-template-row sheet-template-main-roll">
+                <span class="sheet-template-label">Roll Result:</span>
+                <span class="sheet-template-roll">{{roll}}</span>
+            </div>
+            {{/roll}}
+        </div>
+    </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-statsroll">
+    <div class="sheet-template-container">
+        <div class="sheet-template-header">
+            <span class="sheet-template-title">Stat Rolls</span>
+        </div>
+        <div class="sheet-template-body">
+            {{#character}}
+            <div class="sheet-template-row">
+                <span class="sheet-template-label">Character:</span>
+                <span class="sheet-template-value">{{character}}</span>
+            </div>
+            {{/character}}
+            <div class="sheet-stats-roll-table">
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">PWR</div>
+                    <div class="sheet-stat-roll-value">{{pwr}}</div>
+                </div>
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">AGI</div>
+                    <div class="sheet-stat-roll-value">{{agi}}</div>
+                </div>
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">VIT</div>
+                    <div class="sheet-stat-roll-value">{{vit}}</div>
+                </div>
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">MTL</div>
+                    <div class="sheet-stat-roll-value">{{mtl}}</div>
+                </div>
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">QIC</div>
+                    <div class="sheet-stat-roll-value">{{qic}}</div>
+                </div>
+                <div class="sheet-stat-roll-cell">
+                    <div class="sheet-stat-roll-label">APP</div>
+                    <div class="sheet-stat-roll-value">{{app}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</rolltemplate>
+
 <!-- Sheet Workers -->
 <script type="text/worker">
+// Ancestry modifiers lookup
+var ancestryModifiers = {
+    human: { cultivation: 30, lifespan: -25 },
+    demihuman: { cultivation: 10, lifespan: -10 },
+    beastman: { cultivation: -10, lifespan: 30 },
+    giant: { cultivation: 10, lifespan: 50 },
+    fishman: { cultivation: 0, lifespan: 0 },
+    lunarian: { cultivation: 30, lifespan: 30 },
+    solarian: { cultivation: 30, lifespan: 30 },
+    winged: { cultivation: 30, lifespan: 30 },
+    plantkin: { cultivation: 10, lifespan: 40 },
+    crawler: { cultivation: 30, lifespan: -15 },
+    demon: { cultivation: 0, lifespan: 50 },
+    sentient_beast: { cultivation: 0, lifespan: 0 },
+    slimekin: { cultivation: 10, lifespan: 10 },
+    yokai: { cultivation: 10, lifespan: 30 }
+};
+
 // Initialize sheet on first open
 on("sheet:opened", function() {
     getAttrs(["show_char_creation", "character_type", "is_beast", "creation_step"], function(values) {
@@ -1121,7 +1598,6 @@ on("sheet:opened", function() {
                 page: "char_creation",
                 creation_step: values.creation_step || "0"
             });
-            updateCreationStep(values.creation_step || "0");
         } else {
             if (values.is_beast === "1") {
                 setAttrs({ page: "beast" });
@@ -1133,11 +1609,6 @@ on("sheet:opened", function() {
         }
     });
 });
-
-// Update creation step visibility
-function updateCreationStep(step) {
-    console.log("Current step:", step);
-}
 
 // Handle step tab clicks
 on("clicked:step_tab_0", function() {
@@ -1152,30 +1623,42 @@ on("clicked:step_tab_2", function() {
     setAttrs({ creation_step: "2" });
 });
 
-on("clicked:step_tab_complete", function() {
-    setAttrs({ creation_step: "complete" });
+on("clicked:step_tab_3", function() {
+    setAttrs({ creation_step: "3" });
 });
 
-// Handle creation step changes
-on("change:creation_step", function(eventInfo) {
-    updateCreationStep(eventInfo.newValue);
+on("clicked:step_tab_complete", function() {
+    setAttrs({ creation_step: "complete" });
 });
 
 // Handle Next button
 on("clicked:next_step", function() {
     getAttrs(["creation_step"], function(values) {
-        const currentStep = parseInt(values.creation_step) || 0;
-        const nextStep = currentStep + 1;
-        setAttrs({ creation_step: nextStep.toString() });
+        var currentStep = parseInt(values.creation_step) || 0;
+        var nextStep = currentStep === 3 ? "complete" : (currentStep + 1).toString();
+        setAttrs({ creation_step: nextStep });
     });
 });
 
 // Handle Previous button
 on("clicked:prev_step", function() {
     getAttrs(["creation_step"], function(values) {
-        const currentStep = parseInt(values.creation_step) || 0;
-        const prevStep = Math.max(0, currentStep - 1);
-        setAttrs({ creation_step: prevStep.toString() });
+        var currentStep = values.creation_step === "complete" ? 3 : (parseInt(values.creation_step) || 0);
+        var prevStep = Math.max(0, currentStep - 1).toString();
+        setAttrs({ creation_step: prevStep });
+    });
+});
+
+// Handle ancestry changes - save modifiers
+on("change:ancestry", function(eventInfo) {
+    var ancestry = eventInfo.newValue || "";
+    var mods = ancestryModifiers[ancestry] || { cultivation: 0, lifespan: 0 };
+    
+    setAttrs({
+        species: "",
+        bloodline_quality: "",
+        ancestry_cultivation_percent: mods.cultivation,
+        ancestry_lifespan_percent: mods.lifespan
     });
 });
 
@@ -1211,11 +1694,11 @@ on("clicked:level_realm_up", function() {
 
 // Handle character type changes (mortal/cultivator)
 on("change:character_type", function(eventInfo) {
-    const charType = eventInfo.newValue;
+    var charType = eventInfo.newValue;
     
     getAttrs(["is_beast", "page"], function(values) {
         if (values.is_beast !== "1") {
-            const universalPages = ["combat", "techniques", "bio", "notes", "inventory", "options", "char_creation"];
+            var universalPages = ["combat", "techniques", "bio", "notes", "inventory", "options", "char_creation"];
             if (!universalPages.includes(values.page)) {
                 setAttrs({ page: charType });
             }
@@ -1225,7 +1708,7 @@ on("change:character_type", function(eventInfo) {
 
 // Handle beast mode toggle
 on("change:is_beast", function(eventInfo) {
-    const isBeast = eventInfo.newValue;
+    var isBeast = eventInfo.newValue;
     
     getAttrs(["page"], function(values) {
         if (isBeast === "1") {
@@ -1253,5 +1736,44 @@ on("change:show_char_creation", function(eventInfo) {
             }
         });
     }
+});
+
+// Clear stat assignment
+on("clicked:clear_stat_assignment", function() {
+    setAttrs({
+        power_array: "",
+        agility_array: "",
+        vitality_array: "",
+        mental_array: "",
+        qicontrol_array: "",
+        power_base: 1,
+        agility_base: 1,
+        vitality_base: 1,
+        mental_base: 1,
+        qicontrol_base: 1
+    });
+});
+
+// Update stats when array values change
+["power", "agility", "vitality", "mental", "qicontrol"].forEach(function(stat) {
+    on("change:" + stat + "_array", function(eventInfo) {
+        if (eventInfo.newValue) {
+            setAttrs({ [stat + "_base"]: parseInt(eventInfo.newValue) || 1 });
+        }
+    });
+});
+
+// Update stats when custom values change
+["power", "agility", "vitality", "mental", "qicontrol"].forEach(function(stat) {
+    on("change:" + stat + "_custom", function(eventInfo) {
+        setAttrs({ [stat + "_base"]: parseInt(eventInfo.newValue) || 1 });
+    });
+});
+
+// Calculate HP based on vitality
+on("change:vitality_base", function(eventInfo) {
+    var vit = parseInt(eventInfo.newValue) || 1;
+    var hp = 10 + (vit * 5);
+    setAttrs({ hp_max: hp });
 });
 </script>
