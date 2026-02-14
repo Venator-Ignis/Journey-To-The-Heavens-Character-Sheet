@@ -41,7 +41,7 @@
             </div>
             <div class="sheet-field">
                 <label>Ancestry & Species:</label>
-                <input type="text" name="attr_ancestry_species">
+                <span name="attr_anc_spe" class="sheet-anc-spe-display"></span>
             </div>
         </div>
     </div>
@@ -66,12 +66,23 @@
         <div class="sheet-page sheet-page-char-creation">
             <input type="hidden" name="attr_creation_step" value="0">
             
+            <!-- Path type radios (control both Path and Dao steps) -->
+            <input type="radio" name="attr_path_type" value="mortal" id="path-mortal" checked>
+            <input type="radio" name="attr_path_type" value="cultivator" id="path-cultivator">
+            
+            <!-- Stats substep control -->
+            <input type="checkbox" name="attr_show_stats_starting" value="1" checked style="display: none;">
+            <input type="checkbox" name="attr_show_stats_realm" value="1" style="display: none;">
+            <input type="checkbox" name="attr_show_stats_finalize" value="1" style="display: none;">
+            
             <!-- Step Navigation -->
             <div class="sheet-step-tabs">
                 <button type="action" name="act_step_tab_0" class="sheet-step-tab sheet-step-tab-0">Welcome</button>
                 <button type="action" name="act_step_tab_1" class="sheet-step-tab sheet-step-tab-1">Ancestry</button>
                 <button type="action" name="act_step_tab_2" class="sheet-step-tab sheet-step-tab-2">Species</button>
-                <button type="action" name="act_step_tab_3" class="sheet-step-tab sheet-step-tab-3">Stats</button>
+                <button type="action" name="act_step_tab_3" class="sheet-step-tab sheet-step-tab-3">Path</button>
+                <button type="action" name="act_step_tab_4" class="sheet-step-tab sheet-step-tab-4">Dao</button>
+                <button type="action" name="act_step_tab_5" class="sheet-step-tab sheet-step-tab-5">Stats</button>
                 <button type="action" name="act_step_tab_complete" class="sheet-step-tab sheet-step-tab-complete">Complete</button>
             </div>
             
@@ -793,125 +804,350 @@
                 </div>
             </div>
 
-            <!-- Step 3: Stats Assignment -->
-            <div class="sheet-creation-step sheet-creation-stats">
-                <h2>Step 3: Assign Your Stats</h2>
+            <!-- Step 3: Path Selection -->
+            <div class="sheet-creation-step sheet-creation-path">
+                <h2>Step 3: Choose Your Path</h2>
                 
-                <input type="hidden" name="attr_stat_method" value="standard">
+                <div class="sheet-path-tabs">
+                    <label for="path-mortal">Mortal</label>
+                    <label for="path-cultivator">Cultivator</label>
+                </div>
                 
-                <div class="sheet-stats-layout">
-                    <!-- Choice Side -->
-                    <div class="sheet-stats-choice">
-                        <!-- Current Stats Display -->
-                        <div class="sheet-stats-display">
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_power_base">1</span>
-                                <span class="sheet-stat-name">PWR</span>
-                            </div>
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_agility_base">1</span>
-                                <span class="sheet-stat-name">AGI</span>
-                            </div>
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_vitality_base">1</span>
-                                <span class="sheet-stat-name">VIT</span>
-                            </div>
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_mental_base">1</span>
-                                <span class="sheet-stat-name">MTL</span>
-                            </div>
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_qicontrol_base">1</span>
-                                <span class="sheet-stat-name">QIC</span>
-                            </div>
-                            <div class="sheet-stat-display">
-                                <span class="sheet-stat-value" name="attr_cultspeed_base">1</span>
-                                <span class="sheet-stat-name">CUL</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Hit Points -->
-                        <div class="sheet-hp-display">
-                            <label>Hit Points:</label>
-                            <span name="attr_hp_max">10</span>
-                        </div>
-                        
-                        <!-- Assignment Method -->
-                        <div class="sheet-stat-method">
-                            <label>Assignment Method:</label>
-                            <select name="attr_stat_method">
-                                <option value="standard" selected>Standard Array</option>
-                                <option value="roll">Roll/Manual</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Standard Array -->
-                        <div class="sheet-method-standard">
-                            <button type="action" name="act_clear_stat_assignment" class="sheet-btn-clear">Clear Assignment</button>
-                            
-                            <div class="sheet-stat-assignment-grid">
-                                <div class="sheet-stat-row"><label>Power</label><label><input type="radio" name="attr_power_array" value="1"><span>1</span></label><label><input type="radio" name="attr_power_array" value="2"><span>2</span></label><label><input type="radio" name="attr_power_array" value="3"><span>3</span></label></div>
-                                <div class="sheet-stat-row"><label>Agility</label><label><input type="radio" name="attr_agility_array" value="1"><span>1</span></label><label><input type="radio" name="attr_agility_array" value="2"><span>2</span></label><label><input type="radio" name="attr_agility_array" value="3"><span>3</span></label></div>
-                                <div class="sheet-stat-row"><label>Vitality</label><label><input type="radio" name="attr_vitality_array" value="1"><span>1</span></label><label><input type="radio" name="attr_vitality_array" value="2"><span>2</span></label><label><input type="radio" name="attr_vitality_array" value="3"><span>3</span></label></div>
-                                <div class="sheet-stat-row"><label>Mental</label><label><input type="radio" name="attr_mental_array" value="1"><span>1</span></label><label><input type="radio" name="attr_mental_array" value="2"><span>2</span></label><label><input type="radio" name="attr_mental_array" value="3"><span>3</span></label></div>
-                                <div class="sheet-stat-row"><label>Qi Control</label><label><input type="radio" name="attr_qicontrol_array" value="1"><span>1</span></label><label><input type="radio" name="attr_qicontrol_array" value="2"><span>2</span></label><label><input type="radio" name="attr_qicontrol_array" value="3"><span>3</span></label></div>
-                                <div class="sheet-stat-row"><label>Cult. Speed</label><label><input type="radio" name="attr_cultspeed_array" value="1"><span>1</span></label><label><input type="radio" name="attr_cultspeed_array" value="2"><span>2</span></label><label><input type="radio" name="attr_cultspeed_array" value="3"><span>3</span></label></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Roll/Manual Stats -->
-                        <div class="sheet-method-roll">
-                            <button type="roll" name="roll_stats" value="@{whisper}&{template:statsroll} {{character=@{character_name}}} {{pwr=[[1d3]]}} {{agi=[[1d3]]}} {{vit=[[1d3]]}} {{mtl=[[1d3]]}} {{qic=[[1d3]]}} {{cul=[[1d3]]}}">Roll Stats (6d3)</button>
-                            
-                            <div class="sheet-custom-stat-grid">
-                                <div class="sheet-custom-stat-row"><label>Power</label><input type="number" name="attr_power_custom" value="1" min="1" max="3"></div>
-                                <div class="sheet-custom-stat-row"><label>Agility</label><input type="number" name="attr_agility_custom" value="1" min="1" max="3"></div>
-                                <div class="sheet-custom-stat-row"><label>Vitality</label><input type="number" name="attr_vitality_custom" value="1" min="1" max="3"></div>
-                                <div class="sheet-custom-stat-row"><label>Mental</label><input type="number" name="attr_mental_custom" value="1" min="1" max="3"></div>
-                                <div class="sheet-custom-stat-row"><label>Qi Control</label><input type="number" name="attr_qicontrol_custom" value="1" min="1" max="3"></div>
-                                <div class="sheet-custom-stat-row"><label>Cult. Speed</label><input type="number" name="attr_cultspeed_custom" value="1" min="1" max="3"></div>
-                            </div>
-                        </div>
+                <div class="sheet-path-content sheet-path-mortal">
+                    <h3>Mortal Path</h3>
+                    <p>Mortals progress through levels, gaining strength through training and experience.</p>
+                    <label>Mortal Level:</label>
+                    <select name="attr_mortal_level">
+                        <option value="0">0 - Commoner/Civilian</option>
+                        <option value="1">1 - Amateur</option>
+                        <option value="2">2 - Novice Brawler</option>
+                        <option value="3">3 - Adept Brawler</option>
+                        <option value="4">4 - Expert Brawler</option>
+                        <option value="5">5 - Novice Warrior/Soldier</option>
+                        <option value="6">6 - Adept Warrior/Soldier</option>
+                        <option value="7">7 - Veteran Warrior/Soldier</option>
+                        <option value="8">8 - Expert Warrior/Soldier</option>
+                        <option value="9">9 - Amateur Martial Artist</option>
+                        <option value="10">10 - Novice Martial Artist</option>
+                        <option value="11">11 - Martial Artist</option>
+                        <option value="12">12 - Experienced Martial Artist</option>
+                        <option value="13">13 - Veteran Martial Artist</option>
+                        <option value="14">14 - Master Martial Artist</option>
+                        <option value="15">15 - Half-Step Grandmaster</option>
+                        <option value="16">16 - Grandmaster</option>
+                        <option value="17">17 - Peak Grandmaster</option>
+                        <option value="18">18 - Supreme Grandmaster</option>
+                        <option value="19">19 - Heavenly Grandmaster</option>
+                        <option value="20">20 - Transcendent Grandmaster</option>
+                    </select>
+                </div>
+                
+                <div class="sheet-path-content sheet-path-cultivator">
+                    <h3>Cultivator Path</h3>
+                    <p>Cultivators progress through Major and Minor Realms, absorbing Qi to strengthen themselves.</p>
+                    <label>Major Realm:</label>
+                    <select name="attr_major_realm">
+                        <option value="qi_gathering">Qi Gathering</option>
+                        <option value="foundation">Foundation</option>
+                        <option value="core_formation">Core Formation</option>
+                        <option value="martial_soul">Martial Soul</option>
+                        <option value="god_ascendance">God Ascendance</option>
+                    </select>
+                    <label>Minor Realm:</label>
+                    <select name="attr_minor_realm">
+                        <option value="early">Early</option>
+                        <option value="mid">Mid</option>
+                        <option value="late">Late</option>
+                        <option value="peak">Peak</option>
+                    </select>
+                </div>
+                
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="act_prev_step" class="sheet-btn-prev">Previous</button>
+                    <button type="action" name="act_next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Dao Selection -->
+            <div class="sheet-creation-step sheet-creation-dao">
+                <h2>Step 4: Choose Your Dao</h2>
+                
+                <div class="sheet-dao-mortal-msg">
+                    <p style="text-align: center; font-size: 16px; padding: 40px; color: #8b6914;">
+                        <strong>Dao paths are only available to Cultivators.</strong><br>
+                        Mortals do not follow a Dao path.
+                    </p>
+                </div>
+                
+                <div class="sheet-dao-cultivator-content">
+                    <!-- Dao Radio Buttons -->
+                    <input type="radio" name="attr_dao_path" value="sword" id="dao-sword" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="spear" id="dao-spear" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="body_refiner" id="dao-body-refiner" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="corpse" id="dao-corpse" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="puppet" id="dao-puppet" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="psychic" id="dao-psychic" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="zither" id="dao-zither" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="guqin" id="dao-guqin" class="sheet-hide">
+                    <input type="radio" name="attr_dao_path" value="ghost" id="dao-ghost" class="sheet-hide">
+                    
+                    <div class="sheet-dao-tabs">
+                        <label for="dao-sword">Sword</label>
+                        <label for="dao-spear">Spear</label>
+                        <label for="dao-body-refiner">Body Refiner</label>
+                        <label for="dao-corpse">Corpse</label>
+                        <label for="dao-puppet">Puppet</label>
+                        <label for="dao-psychic">Psychic</label>
+                        <label for="dao-zither">Zither</label>
+                        <label for="dao-guqin">Guqin</label>
+                        <label for="dao-ghost">Ghost</label>
                     </div>
                     
-                    <!-- Info Side -->
-                    <div class="sheet-stats-info">
-                        <h3>Stat Assignment Guide</h3>
-                        
-                        <div class="sheet-stat-info-block">
-                            <h4>How to Determine Stats</h4>
-                            <p>Choose one of two methods to assign your starting stats:</p>
-                            <ul><li><strong>Standard Array:</strong> Assign the values 1, 2, 3 to your six stats (each value used twice)<li><strong>Roll/Manual:</strong> Roll 6d3 and manually enter the results</ul>
+                    <div class="sheet-creation-layout">
+                        <!-- Sword Dao -->
+                        <div class="sheet-dao-selection sheet-dao-sword">
+                            <h3>Sword Dao</h3>
+                            <p>Choose your sword style:</p>
+                            <label><input type="radio" name="attr_dao_subpath" value="twin_dragon"><span>Twin Dragon (Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="silent_draw"><span>Silent Draw (Power)</span></label>
                         </div>
                         
-                        <div class="sheet-stat-info-block">
-                            <h4>Power (PWR)</h4>
-                            <p><strong>Measures:</strong> Physical strength and raw power</p>
-                            <p><strong>Important for:</strong> Melee damage, carrying capacity, physical techniques</p>
+                        <div class="sheet-dao-info sheet-dao-sword-info">
+                            <h4>Sword Dao</h4>
+                            <p><strong>Type:</strong> Martial</p>
+                            <p><strong>Twin Dragon:</strong> Dual wield style focused on consistent damage and mobility. Main Stat: Agility. Health: 1d10+5+CON.</p>
+                            <p><strong>Silent Draw:</strong> One-handed style with devastating burst damage. Main Stat: Power. Health: 1d14+7+CON.</p>
+                            <p><strong>Daobility:</strong> Twin Dragon gains damage reduction responses. Silent Draw unleashes powerful sheathed attacks.</p>
                         </div>
                         
-                        <div class="sheet-stat-info-block">
-                            <h4>Agility (AGI)</h4>
-                            <p><strong>Measures:</strong> Speed, reflexes, and dexterity</p>
-                            <p><strong>Important for:</strong> Evasion, initiative, ranged attacks, movement speed</p>
+                        <!-- Spear Dao -->
+                        <div class="sheet-dao-selection sheet-dao-spear">
+                            <h3>Spear Dao</h3>
+                            <p>No sub-paths available.</p>
                         </div>
                         
-                        <div class="sheet-stat-info-block">
-                            <h4>Vitality (VIT)</h4>
-                            <p><strong>Measures:</strong> Constitution, endurance, and health</p>
-                            <p><strong>Important for:</strong> Hit points, stamina, resistance to injury and poison</p>
+                        <div class="sheet-dao-info sheet-dao-spear-info">
+                            <h4>Spear Dao</h4>
+                            <p><strong>Type:</strong> Martial | <strong>Main Stat:</strong> Power</p>
+                            <p><strong>Health:</strong> 1d15+8+VIT</p>
+                            <p><strong>Range:</strong> 10-15m melee range</p>
+                            <p><strong>Strengths:</strong> Highest accuracy and attack effectiveness. Counter to tangible projectiles.</p>
+                            <p><strong>Daobility:</strong> Long Weapon Spinning - Tangible ranged attacks have -20% accuracy (-50% with Evasive Stance).</p>
                         </div>
                         
-                        <div class="sheet-stat-info-block">
-                            <h4>Mental Strength (MTL)</h4>
-                            <p><strong>Measures:</strong> Willpower, focus, and mental fortitude</p>
-                            <p><strong>Important for:</strong> Resisting mental attacks, cultivation comprehension, technique learning</p>
+                        <!-- Body Refiner -->
+                        <div class="sheet-dao-selection sheet-dao-body-refiner">
+                            <h3>Body Refiner</h3>
+                            <p>Choose your refinement path:</p>
+                            <label><input type="radio" name="attr_dao_subpath" value="fist"><span>Fist (Power)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="kick"><span>Kick (Power+Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="finger"><span>Finger (Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="palm"><span>Palm (Vitality)</span></label>
                         </div>
                         
-                        <div class="sheet-stat-info-block">
-                            <h4>Qi Control (QIC)</h4>
-                            <p><strong>Measures:</strong> Ability to manipulate and control Qi</p>
-                            <p><strong>Important for:</strong> Technique effectiveness, Qi efficiency, cultivation speed</p>
+                        <div class="sheet-dao-info sheet-dao-body-refiner-info">
+                            <h4>Body Refiner</h4>
+                            <p><strong>Type:</strong> Martial | <strong>Health:</strong> 1d20+10+VIT</p>
+                            <p><strong>Fist (Power):</strong> Powerful strikes, excellent at breaking objects, shields, and barriers.</p>
+                            <p><strong>Kick (Power+Agility):</strong> Longer reach than fists, always hits first in counters against bare-handed opponents.</p>
+                            <p><strong>Finger (Agility):</strong> Speed-based refiner, most evasive but least durable.</p>
+                            <p><strong>Palm (Vitality):</strong> Immortality refiner focused on durability and longevity.</p>
+                        </div>
+                        
+                        <!-- Corpse Dao -->
+                        <div class="sheet-dao-selection sheet-dao-corpse">
+                            <h3>Corpse Dao</h3>
+                            <p>No sub-paths available.</p>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-corpse-info">
+                            <h4>Corpse Dao</h4>
+                            <p><strong>Type:</strong> Summoner | <strong>Main Stat:</strong> Mental Strength</p>
+                            <p>Control and command corpses in battle. Raise the dead to fight for you.</p>
+                            <p><strong>Max Corpses:</strong> Mental Strength / 5 (rounded down)</p>
+                            <p><strong>Control:</strong> Max corpse stats = 150% of your stats</p>
+                        </div>
+                        
+                        <!-- Puppet Dao -->
+                        <div class="sheet-dao-selection sheet-dao-puppet">
+                            <h3>Puppet Dao</h3>
+                            <p>No sub-paths available.</p>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-puppet-info">
+                            <h4>Puppet Dao</h4>
+                            <p><strong>Type:</strong> Summoner | <strong>Main Stat:</strong> Mental Strength</p>
+                            <p>Craft and control puppets. Create Forged Puppets with Spark of Life.</p>
+                            <p><strong>Strengths:</strong> Puppets can survive inhospitable conditions and withstand attacks that would destroy flesh.</p>
+                            <p><strong>Investment:</strong> Requires materials and time to craft powerful puppets.</p>
+                        </div>
+                        
+                        <!-- Psychic Dao -->
+                        <div class="sheet-dao-selection sheet-dao-psychic">
+                            <h3>Psychic Dao</h3>
+                            <p>No sub-paths available.</p>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-psychic-info">
+                            <h4>Psychic Dao</h4>
+                            <p><strong>Type:</strong> Martial | <strong>Main Stat:</strong> Mental Strength</p>
+                            <p>Control specially-forged Flying Weapons via telekinesis.</p>
+                            <p><strong>Control Range:</strong> Send weapons anywhere within radius to attack or defend.</p>
+                            <p><strong>Trade-off:</strong> More weapons controlled = smaller control range.</p>
+                        </div>
+                        
+                        <!-- Zither Dao -->
+                        <div class="sheet-dao-selection sheet-dao-zither">
+                            <h3>Zither Dao</h3>
+                            <p>Choose your element:</p>
+                            <label><input type="radio" name="attr_dao_subpath" value="metal"><span>Metal</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="wood"><span>Wood</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="fire"><span>Fire</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="earth"><span>Earth</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="water"><span>Water</span></label>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-zither-info">
+                            <h4>Zither Dao</h4>
+                            <p><strong>Type:</strong> Elemental | <strong>Main Stat:</strong> Qi Control</p>
+                            <p>Channel elemental power through musical cultivation.</p>
+                            <p>Choose from five elements: Metal, Wood, Fire, Earth, or Water.</p>
+                            <p>Each element provides unique techniques and abilities.</p>
+                        </div>
+                        
+                        <!-- Guqin Dao -->
+                        <div class="sheet-dao-selection sheet-dao-guqin">
+                            <h3>Guqin Dao</h3>
+                            <p>No sub-paths available.</p>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-guqin-info">
+                            <h4>Guqin Dao</h4>
+                            <p><strong>Type:</strong> Support | <strong>Main Stat:</strong> Mental Strength</p>
+                            <p>Musical cultivation focused on support and control.</p>
+                            <p>Provides buffs, debuffs, and battlefield control through music.</p>
+                        </div>
+                        
+                        <!-- Ghost Dao -->
+                        <div class="sheet-dao-selection sheet-dao-ghost">
+                            <h3>Ghost Dao</h3>
+                            <p>Choose your ghost type:</p>
+                            <label><input type="radio" name="attr_dao_subpath" value="vengeful"><span>Vengeful Ghost (Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="elusive"><span>Elusive Spectre (Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="vanishing"><span>Vanishing Wraith (Agility)</span></label>
+                            <label><input type="radio" name="attr_dao_subpath" value="soul_scholar"><span>Soul Scholar (Mental)</span></label>
+                        </div>
+                        
+                        <div class="sheet-dao-info sheet-dao-ghost-info">
+                            <h4>Ghost Dao</h4>
+                            <p><strong>Type:</strong> Spectral</p>
+                            <p><strong>Agility Ghosts:</strong> Vengeful, Elusive, and Vanishing focus on speed and evasion.</p>
+                            <p><strong>Soul Scholar:</strong> Mental Strength-based path focused on spiritual power.</p>
+                            <p>Ghost cultivators walk the line between life and death.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sheet-creation-buttons">
+                    <button type="action" name="act_prev_step" class="sheet-btn-prev">Previous</button>
+                    <button type="action" name="act_next_step" class="sheet-btn-next">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Stats Assignment -->
+            <div class="sheet-creation-step sheet-creation-stats">
+                <h2>Step 5: Assign Your Stats</h2>
+                
+                <!-- Sub-step tabs -->
+                <div class="sheet-stats-tabs">
+                    <button type="action" name="act_stats_starting" class="sheet-stats-tab">Starting Stats</button>
+                    <button type="action" name="act_stats_realm" class="sheet-stats-tab">Realm Allocation</button>
+                    <button type="action" name="act_stats_finalize" class="sheet-stats-tab">Finalize</button>
+                </div>
+                
+                <!-- Starting Stats Sub-step -->
+                <div class="sheet-stats-substep sheet-stats-starting">
+                    <div class="sheet-stats-layout">
+                        <div class="sheet-stats-choice">
+                            <h3>Starting Stats</h3>
+                            <p>Assign values to your six stats:</p>
+                            
+                            <div class="sheet-stat-inputs">
+                                <label>Power: <input type="number" name="attr_power_start" value="1" min="1" max="3"></label>
+                                <label>Agility: <input type="number" name="attr_agility_start" value="1" min="1" max="3"></label>
+                                <label>Vitality: <input type="number" name="attr_vitality_start" value="1" min="1" max="3"></label>
+                                <label>Mental: <input type="number" name="attr_mental_start" value="1" min="1" max="3"></label>
+                                <label>Qi Control: <input type="number" name="attr_qicontrol_start" value="1" min="1" max="3"></label>
+                                <label>Cult Speed: <input type="number" name="attr_cultspeed_start" value="1" min="1" max="3"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="sheet-stats-info">
+                            <h4>Standard Array</h4>
+                            <p>Use: 1, 1, 2, 2, 3, 3</p>
+                            <p>Each value used exactly twice</p>
+                            <hr>
+                            <h4>Manual Entry</h4>
+                            <p>Enter your rolled or custom values</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Realm Allocation Sub-step -->
+                <div class="sheet-stats-substep sheet-stats-realm">
+                    <div class="sheet-stats-layout">
+                        <div class="sheet-stats-choice">
+                            <h3>Realm/Level Allocation</h3>
+                            <p><strong>Available Points:</strong> <span name="attr_realm_points">0</span></p>
+                            
+                            <div class="sheet-stat-inputs">
+                                <label>Power: <input type="number" name="attr_power_realm" value="0" min="0"></label>
+                                <label>Agility: <input type="number" name="attr_agility_realm" value="0" min="0"></label>
+                                <label>Vitality: <input type="number" name="attr_vitality_realm" value="0" min="0"></label>
+                                <label>Mental: <input type="number" name="attr_mental_realm" value="0" min="0"></label>
+                                <label>Qi Control: <input type="number" name="attr_qicontrol_realm" value="0" min="0"></label>
+                                <label>Cult Speed: <input type="number" name="attr_cultspeed_realm" value="0" min="0"></label>
+                            </div>
+                            
+                            <p><strong>Spent:</strong> <span name="attr_realm_spent">0</span> / <span name="attr_realm_points">0</span></p>
+                        </div>
+                        
+                        <div class="sheet-stats-info">
+                            <h4>Point Calculation</h4>
+                            <p><strong>Mortal:</strong> Level × 2</p>
+                            <p><strong>Cultivator:</strong> Realm z value</p>
+                            <hr>
+                            <p><strong>Your Path:</strong> <span name="attr_path_display">-</span></p>
+                            <p><strong>Your Level:</strong> <span name="attr_level_display">-</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Finalize Sub-step -->
+                <div class="sheet-stats-substep sheet-stats-finalize">
+                    <div class="sheet-stats-layout">
+                        <div class="sheet-stats-choice">
+                            <h3>Final Stats</h3>
+                            <div class="sheet-final-stats">
+                                <div><strong>Power:</strong> <span name="attr_power_final">1</span></div>
+                                <div><strong>Agility:</strong> <span name="attr_agility_final">1</span></div>
+                                <div><strong>Vitality:</strong> <span name="attr_vitality_final">1</span></div>
+                                <div><strong>Mental:</strong> <span name="attr_mental_final">1</span></div>
+                                <div><strong>Qi Control:</strong> <span name="attr_qicontrol_final">1</span></div>
+                                <div><strong>Cult Speed:</strong> <span name="attr_cultspeed_final">1</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="sheet-stats-info">
+                            <h4>Milestones</h4>
+                            <div class="sheet-milestones">
+                                <p><strong>PWR:</strong> <span name="attr_power_milestones">-</span></p>
+                                <p><strong>AGI:</strong> <span name="attr_agility_milestones">-</span></p>
+                                <p><strong>VIT:</strong> <span name="attr_vitality_milestones">-</span></p>
+                                <p><strong>MTL:</strong> <span name="attr_mental_milestones">-</span></p>
+                                <p><strong>QIC:</strong> <span name="attr_qicontrol_milestones">-</span></p>
+                                <p><strong>CUL:</strong> <span name="attr_cultspeed_milestones">-</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1231,6 +1467,14 @@ on("clicked:step_tab_3", function() {
     setAttrs({ creation_step: "3" });
 });
 
+on("clicked:step_tab_4", function() {
+    setAttrs({ creation_step: "4" });
+});
+
+on("clicked:step_tab_5", function() {
+    setAttrs({ creation_step: "5" });
+});
+
 on("clicked:step_tab_complete", function() {
     setAttrs({ creation_step: "complete" });
 });
@@ -1239,7 +1483,7 @@ on("clicked:step_tab_complete", function() {
 on("clicked:next_step", function() {
     getAttrs(["creation_step"], function(values) {
         var currentStep = parseInt(values.creation_step) || 0;
-        var nextStep = currentStep === 3 ? "complete" : (currentStep + 1).toString();
+        var nextStep = currentStep === 5 ? "complete" : (currentStep + 1).toString();
         setAttrs({ creation_step: nextStep });
     });
 });
@@ -1247,9 +1491,181 @@ on("clicked:next_step", function() {
 // Handle Previous button
 on("clicked:prev_step", function() {
     getAttrs(["creation_step"], function(values) {
-        var currentStep = values.creation_step === "complete" ? 3 : (parseInt(values.creation_step) || 0);
+        var currentStep = values.creation_step === "complete" ? 5 : (parseInt(values.creation_step) || 0);
         var prevStep = Math.max(0, currentStep - 1).toString();
         setAttrs({ creation_step: prevStep });
+    });
+});
+
+// Handle path type changes - reset level/realm
+on("change:path_type", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    setAttrs({
+        mortal_level: "0",
+        major_realm: "qi_gathering",
+        minor_realm: "early",
+        dao_path: "",
+        dao_subpath: ""
+    });
+});
+
+// Handle major realm changes - reset minor realm to early
+on("change:major_realm", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    setAttrs({ minor_realm: "early" });
+});
+
+// Handle dao_path changes - reset subpath
+on("change:dao_path", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    setAttrs({ dao_subpath: "" });
+});
+
+// Stats Step Handlers
+
+// Starting stats tracking (no calculation needed - just manual entry)
+on("change:power_start change:agility_start change:vitality_start change:mental_start change:qicontrol_start change:cultspeed_start", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    // No validation - allow any values for manual/standard array
+});
+
+// Realm points calculation
+on("change:path_type change:mortal_level change:major_realm change:minor_realm sheet:opened", function(eventInfo) {
+    if (eventInfo && eventInfo.sourceType === "sheetworker") return;
+    
+    getAttrs(["path_type", "mortal_level", "major_realm", "minor_realm"], function(v) {
+        var points = 0;
+        var pathDisplay = v.path_type === "mortal" ? "Mortal" : "Cultivator";
+        var levelDisplay = "";
+        
+        if (v.path_type === "mortal") {
+            var level = parseInt(v.mortal_level) || 0;
+            points = level * 2;
+            levelDisplay = "Level " + level;
+        } else {
+            var realmPoints = {
+                qi_gathering: { early: 1, mid: 2, late: 3, peak: 5 },
+                foundation: { early: 9, mid: 13, late: 19, peak: 25 },
+                core_formation: { early: 36, mid: 50, late: 67, peak: 87 },
+                martial_soul: { early: 130, mid: 174, late: 260, peak: 347 },
+                god_ascendance: { early: 547, mid: 822, late: 1172, peak: 1597 }
+            };
+            
+            var major = v.major_realm || "qi_gathering";
+            var minor = v.minor_realm || "early";
+            points = (realmPoints[major] && realmPoints[major][minor]) || 0;
+            
+            var majorNames = {
+                qi_gathering: "Qi Gathering",
+                foundation: "Foundation",
+                core_formation: "Core Formation",
+                martial_soul: "Martial Soul",
+                god_ascendance: "God Ascendance"
+            };
+            var minorNames = { early: "Early", mid: "Mid", late: "Late", peak: "Peak" };
+            levelDisplay = majorNames[major] + " " + minorNames[minor];
+        }
+        
+        setAttrs({
+            realm_points: points,
+            path_display: pathDisplay,
+            level_display: levelDisplay
+        });
+    });
+});
+
+// Realm stats tracking
+on("change:power_realm change:agility_realm change:vitality_realm change:mental_realm change:qicontrol_realm change:cultspeed_realm", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    getAttrs(["power_realm", "agility_realm", "vitality_realm", "mental_realm", "qicontrol_realm", "cultspeed_realm"], function(v) {
+        var spent = (parseInt(v.power_realm) || 0) + (parseInt(v.agility_realm) || 0) + (parseInt(v.vitality_realm) || 0) + (parseInt(v.mental_realm) || 0) + (parseInt(v.qicontrol_realm) || 0) + (parseInt(v.cultspeed_realm) || 0);
+        setAttrs({ realm_spent: spent });
+    });
+});
+
+// Final stats calculation
+on("change:power_start change:power_realm change:agility_start change:agility_realm change:vitality_start change:vitality_realm change:mental_start change:mental_realm change:qicontrol_start change:qicontrol_realm change:cultspeed_start change:cultspeed_realm change:ancestry change:species", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    getAttrs(["power_start", "power_realm", "power_bonus", "agility_start", "agility_realm", "agility_bonus", "vitality_start", "vitality_realm", "vitality_bonus", "mental_start", "mental_realm", "mental_bonus", "qicontrol_start", "qicontrol_realm", "qicontrol_bonus", "cultspeed_start", "cultspeed_realm", "cultspeed_bonus"], function(v) {
+        var updates = {
+            power_final: (parseInt(v.power_start) || 0) + (parseInt(v.power_realm) || 0) + (parseInt(v.power_bonus) || 0),
+            agility_final: (parseInt(v.agility_start) || 0) + (parseInt(v.agility_realm) || 0) + (parseInt(v.agility_bonus) || 0),
+            vitality_final: (parseInt(v.vitality_start) || 0) + (parseInt(v.vitality_realm) || 0) + (parseInt(v.vitality_bonus) || 0),
+            mental_final: (parseInt(v.mental_start) || 0) + (parseInt(v.mental_realm) || 0) + (parseInt(v.mental_bonus) || 0),
+            qicontrol_final: (parseInt(v.qicontrol_start) || 0) + (parseInt(v.qicontrol_realm) || 0) + (parseInt(v.qicontrol_bonus) || 0),
+            cultspeed_final: (parseInt(v.cultspeed_start) || 0) + (parseInt(v.cultspeed_realm) || 0) + (parseInt(v.cultspeed_bonus) || 0)
+        };
+        
+        // Calculate milestones
+        var pwr = updates.power_final;
+        var pwr_ms = [];
+        if (pwr >= 50) pwr_ms.push("+" + Math.floor(pwr/50)*20 + "% Phys Ret/Ctr");
+        if (pwr >= 100) pwr_ms.push("+" + Math.floor(pwr/100)*10 + "% Phys Dmg");
+        updates.power_milestones = pwr_ms.length ? pwr_ms.join(", ") : "None";
+        
+        var agi = updates.agility_final;
+        var agi_ms = [];
+        if (agi >= 15) agi_ms.push("+" + Math.floor(agi/15) + " Max AP");
+        if (agi >= 150) agi_ms.push("+" + Math.floor(agi/150) + " AP Regen");
+        updates.agility_milestones = agi_ms.length ? agi_ms.join(", ") : "None";
+        
+        var vit = updates.vitality_final;
+        var vit_ms = [];
+        if (vit >= 50) vit_ms.push("+" + Math.floor(vit/50)*5 + "% Max HP, +" + Math.floor(vit/50)*10 + " Dur");
+        updates.vitality_milestones = vit_ms.length ? vit_ms.join(", ") : "None";
+        
+        var mtl = updates.mental_final;
+        var mtl_ms = [];
+        if (mtl >= 5) mtl_ms.push("+" + Math.floor(mtl/5) + " Mtl Fort");
+        if (mtl >= 35) mtl_ms.push("+" + Math.floor(mtl/35) + " Tech Slots");
+        if (mtl >= 50) mtl_ms.push("+" + Math.floor(mtl/50)*20 + "% Ret/Ctr");
+        if (mtl >= 100) mtl_ms.push("+" + Math.floor(mtl/100) + " Moves");
+        updates.mental_milestones = mtl_ms.length ? mtl_ms.join(", ") : "None";
+        
+        var qic = updates.qicontrol_final;
+        var qic_ms = [];
+        if (qic >= 40) qic_ms.push("-" + Math.floor(qic/40)*5 + "% Tech Cost");
+        if (qic >= 50) qic_ms.push("+" + Math.floor(qic/50)*20 + "% Non-Phys Ret/Ctr");
+        if (qic >= 100) qic_ms.push("+" + Math.floor(qic/100)*10 + "% Non-Phys Dmg");
+        updates.qicontrol_milestones = qic_ms.length ? qic_ms.join(", ") : "None";
+        
+        var cul = updates.cultspeed_final;
+        var cul_ms = [];
+        if (cul >= 10) cul_ms.push("+" + Math.floor(cul/10)*5 + "% Cult Speed");
+        updates.cultspeed_milestones = cul_ms.length ? cul_ms.join(", ") : "None";
+        
+        setAttrs(updates);
+    });
+});
+
+// Sub-step navigation
+on("clicked:stats_starting", function() {
+    setAttrs({ 
+        show_stats_starting: "1",
+        show_stats_realm: "0",
+        show_stats_finalize: "0"
+    });
+});
+
+on("clicked:stats_realm", function() {
+    setAttrs({ 
+        show_stats_starting: "0",
+        show_stats_realm: "1",
+        show_stats_finalize: "0"
+    });
+});
+
+on("clicked:stats_finalize", function() {
+    setAttrs({ 
+        show_stats_starting: "0",
+        show_stats_realm: "0",
+        show_stats_finalize: "1"
     });
 });
 
@@ -1258,11 +1674,33 @@ on("change:ancestry", function(eventInfo) {
     var ancestry = eventInfo.newValue || "";
     var mods = ancestryModifiers[ancestry] || { cultivation: 0, lifespan: 0 };
     
+    var ancestryDisplay = ancestry ? ancestry.charAt(0).toUpperCase() + ancestry.slice(1) : "";
+    
     setAttrs({
         species: "",
         bloodline_quality: "",
         ancestry_cultivation_percent: mods.cultivation,
-        ancestry_lifespan_percent: mods.lifespan
+        ancestry_lifespan_percent: mods.lifespan,
+        anc_spe: ancestryDisplay
+    });
+});
+
+on("change:species", function(eventInfo) {
+    if (eventInfo.sourceType === "sheetworker") return;
+    
+    getAttrs(["ancestry", "species"], function(values) {
+        var ancestry = values.ancestry || "";
+        var species = values.species || "";
+        
+        var ancestryDisplay = ancestry ? ancestry.charAt(0).toUpperCase() + ancestry.slice(1) : "";
+        var display = ancestryDisplay;
+        
+        if (species && species !== "none") {
+            var speciesDisplay = species.charAt(0).toUpperCase() + species.slice(1);
+            display = ancestryDisplay + ": " + speciesDisplay;
+        }
+        
+        setAttrs({ anc_spe: display });
     });
 });
 
